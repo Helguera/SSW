@@ -36,10 +36,10 @@ public class UserBD {
     public static boolean userExists(Usuario usuario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String query = "SELECT email FROM USUARIO WHERE email = ?";
-        try {
+        //PreparedStatement ps = null;
+        //ResultSet rs = null;
+        //String query = "SELECT email FROM USUARIO WHERE email = ?";
+        /*try {
             ps = connection.prepareStatement(query);
             ps.setString(1, usuario.getEmail());
             rs = ps.executeQuery();
@@ -51,7 +51,24 @@ public class UserBD {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }*/
+        boolean res=false;
+        String email="inic";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet usuarios = statement.executeQuery("SELECT email FROM usuario");       
+            while (usuarios.next()) {
+         
+                email = usuarios.getString(4);
+                
+                if(email==usuario.getEmail()) res=true;
+    // procesar cada elemento del resultado de la consulta
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+            return false;
         }
+        return res;
     }
 
     /*public static Usuario selectUsuario(String email) {
