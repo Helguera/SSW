@@ -5,7 +5,6 @@ package servlets;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import roles.*;
+
 /**
  *
  * @author javier
@@ -22,64 +22,43 @@ import roles.*;
 @WebServlet(urlPatterns = {"/addUserServlet"})
 public class addUserServlet extends HttpServlet {
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        /*response.setContentType("text/html;charset=UTF-8");
-        PrintWriter pw = response.getWriter();
-        pw.print("<html>");
-            pw.print("<body>");
-                pw.print("Prueba de servlet");
-                pw.print(request.getParameter("nombre"));
-            pw.print("</body>");
-        pw.print("</html>");*/
-        
-        
-            String firstName = request.getParameter("nombre");
-            String lastName = request.getParameter("apellidos");
-            String emailAddress = request.getParameter("email");
-            Usuario user = new User();
-            user.setEmail(email);
-            user.setNombre(nombre);
-            user.setApellidos(lastName);
-            String url = "";
-            UserDB.insert(user);
-            
-            
 
-        /*ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();*/
-        
-        String query = "insert into usuario values ('Fernando','Zamora','12345678A','hola@hola.com','calle',5,'Valladolid', 47001,'1234')";
-        try{
-            Statement statement = connection.createStatement();
-            int rowCount = statement.executeUpdate(query);
-        }catch (Exception e){
-            
-        }
-        
-        
-        
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        Usuario usuario = new Usuario();
+        usuario.setNombre(request.getParameter("nombre"));
+        usuario.setApellidos(request.getParameter("apellidos"));
+        usuario.setDni(request.getParameter("dni"));
+        usuario.setEmail(request.getParameter("email"));
+        usuario.setPassword(request.getParameter("password"));
+
+        usuario.setCalle(request.getParameter("calle"));
+        usuario.setResto(request.getParameter("resto"));
+        usuario.setPoblacion(request.getParameter("poblacion"));
+        usuario.setProvicia(request.getParameter("provincia"));
+        usuario.setCp(request.getParameter("cp"));
         
-        response.setContentType("text/html;charset=UTF-8");
         PrintWriter pw = response.getWriter();
-        pw.print("<html>");
-            pw.print("<body>");
-                pw.print("Prueba de servlet");
-                pw.print(request.getParameter("nombre"));
-            pw.print("</body>");
-        pw.print("</html>");
+        pw.println(usuario.getEmail());
         
+
+        if (UserBD.userExists(usuario) == false) {
+            pw.println("El usuario NO está en la base de datos");
+            
+        } else {
+            pw.println("El usuario SI está en la base de datos");
+            System.out.println("El usuario SI está en la base de datos");
+        }
+
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";

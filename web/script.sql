@@ -37,4 +37,4 @@ create table admin (
 );
 
 
---insert into usuario values ('Fernando','Zamora','12345678A','hola@hola.com','calle',5,'Valladolid', 47001, '1234');
+insert into usuario values ('Fernando','Zamora','12345678A','hola@hola.com','calle',5,'Valladolid', 47001, '1234');

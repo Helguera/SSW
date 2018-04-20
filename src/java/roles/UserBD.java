@@ -14,7 +14,7 @@ import servlets.*;
 
 public class UserBD {
 
-    public static int insert(Usuario user) {
+    /*public static int insert(Usuario user) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
@@ -32,17 +32,16 @@ public class UserBD {
             e.printStackTrace();
             return 0;
         }
-    }
-
-    public static boolean emailExists(String emailAddress) {
+    }*/
+    public static boolean userExists(Usuario usuario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "SELECT email FROM User WHERE EmailAddress = ?";
+        String query = "SELECT email FROM USUARIO WHERE email = ?";
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, emailAddress);
+            ps.setString(1, usuario.getEmail());
             rs = ps.executeQuery();
             boolean res = rs.next();
             rs.close();
@@ -55,7 +54,7 @@ public class UserBD {
         }
     }
 
-    public static Usuario selectUsuario(String email) {
+    /*public static Usuario selectUsuario(String email) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
@@ -80,5 +79,5 @@ public class UserBD {
             e.printStackTrace();
             return null;
         }
-    }
+    }*/
 }
