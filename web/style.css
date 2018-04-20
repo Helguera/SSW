@@ -1,0 +1,154 @@
+
+* { 
+  padding: 0;
+  margin: 0;
+}
+
+
+body { 
+  font: normal .8em arial, sans-serif;
+  overflow-x: hidden;
+}
+
+
+header {
+  background: #93c178;
+  color: white;
+  height: 100px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: sticky;
+}   
+
+  header a {
+    color: white;
+  }
+
+
+footer {
+  background: #93c178;
+  color: white;
+  text-align: center;
+  height: 50px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+
+p { 
+  padding: 0 0 16px 0;
+  line-height: 1.7em;
+}
+
+h2 {  
+  font: normal 150% arial, sans-serif;
+}
+
+h3 {  
+  color: #444;
+  padding: 10px 0 5px 0;
+  font: normal 170% arial;
+}
+
+h5 {  
+  color: #888;
+  font: 110% arial;
+  letter-spacing: normal;
+  padding: 0 0 15px 0;
+}
+
+
+.zoom {
+  transition: transform .2s;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.05); 
+}
+
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=password] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  width: 25%;
+  margin: auto;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.container {
+  margin: auto;
+  width: 50%;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+
+nav {
+  float: right;
+}
+  
+nav ul {
+  padding-right: 20px;
+}
+  
+  nav ul li {
+    display: inline-block;
+    line-height: 100px;
+  }
+          
+    nav ul li a {
+      display: block;
+      padding: 0 10px;
+      text-decoration: none;
+    }
+          
+      nav ul li a:hover {
+        background: #000;
+        -webkit-transition: all 1s ease-out;
+      }
+
+
+.image {
+  display: inline;
+  margin: 0px;
+  padding: 10px 25px 5px 25px;
+  vertical-align:middle;
+  }
+  
+
+.image-grid li {
+  display: inline-block;
+  width: 181px;
+  margin: 0 12px 30px;
+}
+  
+
+
+
+  

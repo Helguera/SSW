@@ -1,0 +1,98 @@
+<html>
+<meta charset="utf-8">
+<head>
+    <title>Impresion 3D</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+
+
+    <header id="header">
+        <a href="index.html">
+            <img src="images/logo.png" width="25%" />
+        </a>
+        <nav>
+            <ul>
+                <li>
+                    <h1>
+                        <a href="index.html">Inicio</a>
+                    </h1>
+                </li>
+                <li>
+                    <h1>
+                        <a href="impresion.html">Impresión</a>
+                    </h1>
+                </li>
+                <li>
+                    <h1>
+                        <a href="tienda.html">Tienda</a>
+                    </h1>
+                </li>
+                <li>
+                    <h1>
+                        <a href="cursos.html">Cursos</a>
+                    </h1>
+                </li>
+                <li>
+                    <h1>
+                        <a href="registro.html">Registro</a>
+                    </h1>
+                </li>
+                <li>
+                    <h1>
+                        <a href="info_empresa.html">La empresa</a>
+                    </h1>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <br>
+   
+     <div class="container">
+     
+         <center><h1>¡Envíe sus archivos!</h1></center>
+         <center><h3>Rellene la siguiente información:</h3></center>
+        
+            
+            <p>Nombre: <input name="nombre" type="text" placeholder="Tu nombre..."></p>
+            <p>Apellidos: <input name="Apellidos" type="text" placeholder="Tus apellidos...">
+            <p>E-mail: <input name="email" type="text" placeholder="Tu email..."></p>
+            <div>
+                <label>Diseño / impresión :  </label>
+                <select name="servicio">
+                    <option value="TE">Solicitar diseño</option>
+                    <option value="VA">Solicitar impresión</option>
+                    
+                    <option selected="selected">Selecciona una opción...</option>
+                </select>
+
+            </div><br>
+            <div>
+            <textarea name="comentarios" rows="10" cols="40">Descripción de su solicitud.</textarea>
+            </div>
+            
+           
+            <input type="file" name="adjunto" accept=".pdf,.jpg,.png,.stl" multiple>
+             <FONT SIZE=1>&#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160* Formatos permitidos: .pdf , .jpg, .png , .stl.</font>
+            <br>
+            <br>
+
+            <p>
+                <input type = "submit" value = "Enviar">
+            </p>
+     </div>
+   
+     <br>
+
+    <footer class="footer">
+        <br>
+        <h2>© 3DImpresion 2018</h2>
+    </footer>
+
+</body>
+
+</html>

@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/SSW"/>
+<Context path="/SSW">
+<Resource name="jdbc/impresion3d" auth="Container" type="javax.sql.DataSource"
+factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" testWhileIdle="true" testOnBorrow="true"
+testOnReturn="false" validationQuery="SELECT 1 FROM SYSIBM.SYSDUMMY1"
+validationInterval="30000" timeBetweenEvictionRunsMillis="30000" maxActive="100" minIdle="10"
+maxWait="10000" initialSize="10" removeAbandonedTimeout="60" removeAbandoned="true"
+logAbandoned="true" minEvictableIdleTimeMillis="30000" jmxEnabled="true"
+jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
+org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
+username="root" password="root" driverClassName="org.apache.derby.jdbc.ClientDriver"
+url="jdbc:derby://localhost:1527/impresion3d" />
+</Context>
