@@ -32,9 +32,9 @@ create table curso (
 
 create table admin (
     email varchar(100),
-    password varchar(100);
+    password varchar(100),
     PRIMARY KEY (email)
 );
 
 
-insert into usuario values ('Fernando','Zamora','12345678A','hola@hola.com','calle',5,'Valladolid', 47001, '1234');
+--insert into usuario values ('Fernando','Zamora','12345678A','hola@hola.com','calle',5,'Valladolid', 47001, '1234');
