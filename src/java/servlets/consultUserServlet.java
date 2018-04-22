@@ -43,7 +43,9 @@ public class consultUserServlet extends HttpServlet{
             
         } else {
             pw.println("El usuario SI está en la base de datos->Comprobamos contraseña");
-           
+            Usuario user=UserBD.selectUsuario(usuario.getEmail());
+            if(user.getPassword()==usuario.getPassword()) pw.println("Login correcto");
+            else pw.println("Login incorrecto");
         }
         
     }

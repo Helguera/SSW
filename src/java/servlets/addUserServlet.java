@@ -53,19 +53,24 @@ public class addUserServlet extends HttpServlet {
         String cp = request.getParameter("cp");
         usuario.setCp(cp);
         
-        UserBD.insert(usuario);
-        
         PrintWriter pw = response.getWriter();
         pw.println(usuario.getEmail());
         
-
         if (UserBD.userExists(usuario) == false) {
             pw.println("El usuario NO está en la base de datos");
+            UserBD.insert(usuario);
+
             
         } else {
             pw.println("El usuario SI está en la base de datos");
             System.out.println("El usuario SI está en la base de datos");
         }
+        
+        
+        
+        
+
+        
 
     }
 

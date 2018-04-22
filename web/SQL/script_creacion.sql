@@ -12,6 +12,7 @@ create table usuario (
     calle varchar(100),
     numero varchar(100),
     ciudad varchar(100),
+    provincia varchar(100),
     cp varchar(100),
     password varchar(100)
 );

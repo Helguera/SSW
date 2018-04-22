@@ -18,8 +18,8 @@ public class UserBD {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String query = "insert into usuario (nombre, apellido,email,calle,numero,ciudad,cp,password) "
-                + "VALUES('"+user.getNombre()+"','"+user.getApellidos()+"','"+user.getEmail()+"','"+user.getCalle()+"','"+user.getResto()+"','"+user.getPoblacion()+"','"+user.getCp()+"','"+user.getPassword()+"')";
+        String query = "insert into usuario (nombre, apellido,email,calle,numero,ciudad,provincia,cp,password) "
+                + "VALUES('"+user.getNombre()+"','"+user.getApellidos()+"','"+user.getEmail()+"','"+user.getCalle()+"','"+user.getResto()+"','"+user.getPoblacion()+"','"+user.getProvicia()+"','"+user.getCp()+"','"+user.getPassword()+"')";
         //String query = "insert into usuario values ('"+user.getNombre()+"','"+user.getApellidos()+"','"+user.getEmail()+"','"+user.getCalle()+"',"+user.getResto()+",'"+user.getPoblacion()+"',"+ user.getCp()+",'"+user.getPassword()+"')";
         try {
             Statement statement = connection.createStatement();
@@ -77,30 +77,38 @@ public class UserBD {
         
     }
 
-    /*public static Usuario selectUsuario(String email) {
+    public static Usuario selectUsuario(String email) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "SELECT * FROM User WHERE EmailAddress = ?";
+        String query = "SELECT password FROM User WHERE EmailAddress = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);
             rs = ps.executeQuery();
-            Usuario user = null;
+            Usuario usuario = null;
             if (rs.next()) {
-                user = new Usuario();
-                user.setFirstName(rs.getString("FirstName"));
-                user.setLastName(rs.getString("LastName"));
-                user.setEmailAddress(rs.getString("EmailAddress"));
+                usuario = new Usuario();               
+                
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellidos(rs.getString("apellido"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setPassword(rs.getString("password"));
+
+                usuario.setCalle(rs.getString("calle"));
+                usuario.setResto(rs.getString("numero"));
+                usuario.setPoblacion(rs.getString("ciudad"));
+                usuario.setProvicia(rs.getString("provincia"));
+                usuario.setCp(rs.getString("cp"));
             }
             rs.close();
             ps.close();
             pool.freeConnection(connection);
-            return user;
+            return usuario;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
-    }*/
+    }
 }
