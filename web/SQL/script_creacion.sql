@@ -8,15 +8,14 @@ drop table admin;
 create table usuario (
     nombre varchar(100),
     apellido varchar(100),
-    dni varchar(9),
     email varchar(100),
     calle varchar(100),
     numero integer,
     ciudad varchar(100),
     cp integer,
-    password varchar(100),
-    PRIMARY KEY (dni)
+    password varchar(100)
 );
+
 
 create table productos (
     id_producto integer,

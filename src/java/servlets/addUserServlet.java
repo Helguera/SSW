@@ -35,7 +35,6 @@ public class addUserServlet extends HttpServlet {
         Usuario usuario = new Usuario();
         usuario.setNombre(request.getParameter("nombre"));
         usuario.setApellidos(request.getParameter("apellidos"));
-        usuario.setDni(request.getParameter("dni"));
         usuario.setEmail(request.getParameter("email"));
         usuario.setPassword(request.getParameter("password"));
 
@@ -44,6 +43,8 @@ public class addUserServlet extends HttpServlet {
         usuario.setPoblacion(request.getParameter("poblacion"));
         usuario.setProvicia(request.getParameter("provincia"));
         usuario.setCp(request.getParameter("cp"));
+        
+        UserBD.insert(usuario);
         
         PrintWriter pw = response.getWriter();
         pw.println(usuario.getEmail());

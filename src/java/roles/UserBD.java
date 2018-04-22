@@ -14,16 +14,34 @@ import servlets.*;
 
 public class UserBD {
 
-    /*public static int insert(Usuario user) {
+    public static int insert(Usuario user) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String query = "INSERT INTO User (FirstName, LastName,EmailAddress) VALUES (?, ?, ?)";
+        String query = "insert into usuario values (nombre, apellido,email,calle,numero,ciudad,cp,password) VALUES (?,?,?,?,?,?,?,?)";
+        //String query = "insert into usuario values ('"+user.getNombre()+"','"+user.getApellidos()+"','"+user.getEmail()+"','"+user.getCalle()+"',"+user.getResto()+",'"+user.getPoblacion()+"',"+ user.getCp()+",'"+user.getPassword()+"')";
+        /*try {
+            Statement statement = connection.createStatement();
+            int rowCount = statement.executeUpdate(query);
+        } catch (Exception w) {
+
+        }*/
         try {
+            
+            //Preparamos el query
+            
             ps = connection.prepareStatement(query);
             ps.setString(1, user.getNombre());
-            ps.setString(2, user.getApellidoName());
+            ps.setString(2, user.getApellidos());
             ps.setString(3, user.getEmail());
+            ps.setString(4, user.getCalle());
+            ps.setString(5, user.getResto());
+            ps.setString(6, user.getPoblacion());
+            ps.setString(7, user.getCp());
+            ps.setString(8, user.getPassword());
+            
+            //Ejecutamos el query
+            
             int res = ps.executeUpdate();
             ps.close();
             pool.freeConnection(connection);
@@ -32,7 +50,8 @@ public class UserBD {
             e.printStackTrace();
             return 0;
         }
-    }*/
+         
+    }
     public static boolean userExists(Usuario usuario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();

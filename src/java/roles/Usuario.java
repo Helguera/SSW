@@ -15,7 +15,6 @@ public class Usuario implements Serializable{
     
     private String nombre;
     private String apellidos;
-    private String dni;
     private String email;
     private String password;
     //direccion
@@ -37,9 +36,7 @@ public class Usuario implements Serializable{
     public void setApellidos(String a){
         this.apellidos=a;
     }
-    public void setDni(String dni){
-        this.dni=dni;
-    }
+    
     public void setEmail(String e){
         this.email=e;
     }
@@ -70,9 +67,7 @@ public class Usuario implements Serializable{
     public String getApellidos(){
         return this.apellidos;
     }
-    public String getDni(){
-        return this.dni;
-    }
+    
     public String getEmail(){
         return this.email;
     }
