@@ -13,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import roles.Curso;
+import roles.CursoBD;
 
 /**
  *
@@ -30,21 +32,24 @@ public class consultCursoServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        Curso curso = new Curso();
         int codigo = request.getIntHeader("code");
+        curso.setCode(codigo);
         String nombre = request.getParameter("nombre");
+        curso.setNombre(nombre);
         
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
+        PrintWriter pw = response.getWriter();
+        pw.println(curso.getNombre());
         
-        String query = "insert into curso values ('123456','CursoPrincipiante','60.00')";
-        try{
-            Statement statement = connection.createStatement();
-            int rowCount = statement.executeUpdate(query);
-        }catch (Exception e){
+        if (CursoBD.cursoExists(curso) == false) {
+            pw.println("EL curso no existe.");
             
+        } else {
+            pw.println("El curso si esta disponible.");
+            System.out.println("El curso si esta.");
         }
     }
 
@@ -57,7 +62,7 @@ public class consultCursoServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
     }

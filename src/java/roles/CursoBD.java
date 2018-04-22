@@ -13,7 +13,65 @@ import servlets.*;
  */
 public class CursoBD {
     
-    public static Curso selectCurso(String nombre) {
+    public static int insert(Curso curso){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String query = "insert into curso (code, nombre, precio) "
+                + "VALUES('"+curso.getCode()+"','"+curso.getNombre()+"','"+curso.getPrecio()+"')";
+        //String query = "insert into usuario values ('"+user.getNombre()+"','"+user.getApellidos()+"','"+user.getEmail()+"','"+user.getCalle()+"',"+user.getResto()+",'"+user.getPoblacion()+"',"+ user.getCp()+",'"+user.getPassword()+"')";
+        try {
+            Statement statement = connection.createStatement();
+            int rowCount = statement.executeUpdate(query);
+        } catch (Exception w) {
+
+        }
+        
+    
+        try {
+            
+            //Preparamos el query
+            
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, curso.getCode());
+            ps.setString(2, curso.getNombre());
+            ps.setDouble(3, curso.getPrecio());
+            //Ejecutamos el query
+            
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+         
+    }
+    
+    public static boolean cursoExists(Curso curso) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT nombre FROM Curso WHERE nombre = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, curso.getNombre());
+            rs = ps.executeQuery();
+            boolean res = rs.next();
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        
+    }
+    
+    /*public static Curso selectCurso(String nombre) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
@@ -38,5 +96,5 @@ public class CursoBD {
             e.printStackTrace();
             return null;
         }
-    }
+    }*/
 }

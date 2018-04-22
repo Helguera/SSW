@@ -35,21 +35,27 @@ public class addCursoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         Curso curso = new Curso();
-        curso.setCode(request.getIntHeader("code"));
-        curso.setNombre(request.getParameter("nombre"));
-        curso.setPrecio(request.getIntHeader("precio"));
+        int code = request.getIntHeader("code");
+        curso.setCode(code);
+        String nombre = request.getParameter("nombre");
+        curso.setNombre(nombre);
+        double precio = request.getIntHeader("precio");
+        curso.setPrecio(precio);
+        
+        CursoBD.insert(curso);
         
         PrintWriter pw = response.getWriter();
         pw.println(curso.getCode());
         
 
-        if (CursoBD.selectCurso(curso.getNombre()) == null) {
-            pw.println("Debe elegir un curso.");
+        if (CursoBD.cursoExists(curso) == false) {
+            pw.println("El curso ha sido añadido");
             
         } else {
-            pw.println("El curso ha sido seleccionado.");
-            System.out.println("El curso ha sido seleccionado.");
+            pw.println("El curso ya existe actualmente.");
+            System.out.println("El curso ya existe actualmente.");
         }
 
     }
