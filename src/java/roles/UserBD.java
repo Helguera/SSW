@@ -82,7 +82,7 @@ public class UserBD {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "SELECT * FROM User WHERE email = ?";
+        String query = "SELECT * FROM usuario WHERE email = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);
@@ -118,12 +118,12 @@ public class UserBD {
         ResultSet rs = null;
         String password="";
 
-        String query = "SELECT * FROM User WHERE email = ?";
+        String query = "SELECT password FROM usuario WHERE email = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);
             rs = ps.executeQuery();
-            Usuario usuario = null;
+            
             if (rs.next()) {
                 password=rs.getString("password");               
             }

@@ -34,16 +34,12 @@ public class consultUserServlet extends HttpServlet{
             throws ServletException, IOException {
         
         Usuario usuario = new Usuario();
-        String email= request.getParameter("email");
-        usuario.setEmail("hola@hola.com");
-        String pass=request.getParameter("password");
-        usuario.setPassword("1234");
+        String email= request.getParameter("correo");
+        usuario.setEmail(email);
+        String pass=request.getParameter("pass");
+        usuario.setPassword(pass);
         
         PrintWriter pw = response.getWriter();
-        pw.println(email);
-
-        pw.println(usuario.getEmail());
-        pw.println(usuario.getPassword());
         pw.println(UserBD.selectPass(email)+" de la base");
 
 
@@ -54,7 +50,7 @@ public class consultUserServlet extends HttpServlet{
         } else {
             pw.println("El usuario SI está en la base de datos->Comprobamos contraseña");
             //Usuario user=UserBD.selectUsuario(usuario.getEmail());
-            if(UserBD.selectPass(email)==usuario.getPassword()) pw.println("Login correcto");
+            if(UserBD.selectPass(email).equals(usuario.getPassword())) pw.println("Login correcto");
             else pw.println("Login incorrecto");
         }
         
