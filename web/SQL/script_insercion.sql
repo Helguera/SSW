@@ -3,8 +3,8 @@
 
 -- INSERTAR USUARIOS
 
-insert into usuario values ('Fernando','Zamora','hola@hola.com','calle',5,'Valladolid', 47001, '1234');
-insert into usuario values ('Fernando','Zamora','adios@adios.com','calle',5,'Valladolid', 47001, '1234');
+insert into usuario values ('Fernando','Zamora','hola@hola.com','calle','5','Valladolid', '47001', '1234');
+insert into usuario values ('Fernando','Zamora','adios@adios.com','calle','5','Valladolid', '47001', '1234');
 
 -- INSERTAR CURSOS
 

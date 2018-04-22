@@ -10,9 +10,9 @@ create table usuario (
     apellido varchar(100),
     email varchar(100),
     calle varchar(100),
-    numero integer,
+    numero varchar(100),
     ciudad varchar(100),
-    cp integer,
+    cp varchar(100),
     password varchar(100)
 );
 

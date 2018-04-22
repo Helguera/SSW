@@ -33,16 +33,25 @@ public class addUserServlet extends HttpServlet {
             throws ServletException, IOException {
 
         Usuario usuario = new Usuario();
-        usuario.setNombre(request.getParameter("nombre"));
-        usuario.setApellidos(request.getParameter("apellidos"));
-        usuario.setEmail(request.getParameter("email"));
-        usuario.setPassword(request.getParameter("password"));
+        String nombre = request.getParameter("nombre");
+        usuario.setNombre(nombre);
+        String apellidos=request.getParameter("apellidos");
+        usuario.setApellidos(apellidos);
+        String email= request.getParameter("email");
+        usuario.setEmail(email);
+        String pass=request.getParameter("password");
+        usuario.setPassword(pass);
 
-        usuario.setCalle(request.getParameter("calle"));
-        usuario.setResto(request.getParameter("resto"));
-        usuario.setPoblacion(request.getParameter("poblacion"));
-        usuario.setProvicia(request.getParameter("provincia"));
-        usuario.setCp(request.getParameter("cp"));
+        String calle=request.getParameter("calle");
+        usuario.setCalle(calle);
+        String resto=request.getParameter("resto");
+        usuario.setResto(resto);
+        String poblacion =request.getParameter("poblacion");
+        usuario.setPoblacion(poblacion);
+        String provincia = request.getParameter("provincia");
+        usuario.setProvicia(provincia);
+        String cp = request.getParameter("cp");
+        usuario.setCp(cp);
         
         UserBD.insert(usuario);
         

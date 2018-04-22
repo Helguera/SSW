@@ -26,7 +26,17 @@ public class Usuario implements Serializable{
     
     
     //Constructor vacío
-    public Usuario(){}
+    public Usuario(){
+        /*nombre="";
+        apellidos="";
+        email="";
+        password="";
+        calle="";
+        resto="";
+        poblacion="";
+        provincia="";
+        cp="";*/
+    }
         
     
     //Setters
@@ -41,7 +51,7 @@ public class Usuario implements Serializable{
         this.email=e;
     }
     public void setPassword(String p){
-        this.email=p;
+        this.password=p;
     }
     public void setCalle(String c){
         this.calle=c;
