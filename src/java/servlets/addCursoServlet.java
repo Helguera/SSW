@@ -1,0 +1,66 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package servlets;
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import roles.Curso;
+import roles.CursoBD;
+
+/**
+ *
+ * @author enriq_000
+ */
+@WebServlet(name = "addCursoServlet", urlPatterns = {"/addCursoServlet"})
+public class addCursoServlet extends HttpServlet {
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Curso curso = new Curso();
+        curso.setCode(request.getIntHeader("code"));
+        curso.setNombre(request.getParameter("nombre"));
+        curso.setPrecio(request.getIntHeader("precio"));
+        
+        PrintWriter pw = response.getWriter();
+        pw.println(curso.getCode());
+        
+
+        if (CursoBD.selectCurso(curso.getNombre()) == null) {
+            pw.println("Debe elegir un curso.");
+            
+        } else {
+            pw.println("El curso ha sido seleccionado.");
+            System.out.println("El curso ha sido seleccionado.");
+        }
+
+    }
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    }
+    
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+}
