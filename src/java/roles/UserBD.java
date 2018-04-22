@@ -82,7 +82,7 @@ public class UserBD {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "SELECT password FROM User WHERE EmailAddress = ?";
+        String query = "SELECT * FROM User WHERE email = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);
@@ -106,6 +106,31 @@ public class UserBD {
             ps.close();
             pool.freeConnection(connection);
             return usuario;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public static String selectPass(String email) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String password="";
+
+        String query = "SELECT * FROM User WHERE email = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            Usuario usuario = null;
+            if (rs.next()) {
+                password=rs.getString("password");               
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return password;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

@@ -24,27 +24,37 @@ import roles.Usuario;
 @WebServlet(urlPatterns = {"/consultUserServlet"})
 public class consultUserServlet extends HttpServlet{
     
-    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         Usuario usuario = new Usuario();
         String email= request.getParameter("email");
-        usuario.setEmail(email);
+        usuario.setEmail("hola@hola.com");
         String pass=request.getParameter("password");
-        usuario.setPassword(pass);
+        usuario.setPassword("1234");
         
         PrintWriter pw = response.getWriter();
+        pw.println(email);
+
         pw.println(usuario.getEmail());
+        pw.println(usuario.getPassword());
+        pw.println(UserBD.selectPass(email)+" de la base");
+
+
         
         if (UserBD.userExists(usuario) == false) {
             pw.println("El usuario NO está en la base de datos->Error en loggin");
             
         } else {
             pw.println("El usuario SI está en la base de datos->Comprobamos contraseña");
-            Usuario user=UserBD.selectUsuario(usuario.getEmail());
-            if(user.getPassword()==usuario.getPassword()) pw.println("Login correcto");
+            //Usuario user=UserBD.selectUsuario(usuario.getEmail());
+            if(UserBD.selectPass(email)==usuario.getPassword()) pw.println("Login correcto");
             else pw.println("Login incorrecto");
         }
         

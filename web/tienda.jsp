@@ -67,7 +67,6 @@
     </center>
     <br><br><br>
 
-
     <ul class="image-grid">
         <%
             ConnectionPool pool = ConnectionPool.getInstance();
@@ -102,6 +101,7 @@
 
         %>
     </ul>
+    
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
