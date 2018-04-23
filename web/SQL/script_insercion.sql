@@ -28,3 +28,12 @@ insert into productos values (6, 22);
     insert into consumibles values (4, 'PLA - Blanco', 'SmartMaterials');
     insert into consumibles values (5, 'PLA - Azul', 'BQ');
     insert into consumibles values (6, 'ABS - Verde', 'FormFutura');
+
+-- INSERTAR CURSOS --
+
+insert insertinto cursos values (1, 'Iniciacion a la impresion en 3D', 'C/Falsa 123, Valladolid', 'Curso para gente que quiera iniciarse en este mundo con ningun conocimiento del tema');
+insert insertinto cursos values (2, 'Curso avanzado de impresion 3d', 'C/Falsa 123, Valladolid', 'Curso para gente que quiera especializarse en este mundo con una base amplia sobre el tema');
+
+
+
+

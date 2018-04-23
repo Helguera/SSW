@@ -2,7 +2,7 @@ drop table usuario;
 drop table productos;
 drop table impresoras3d;
 drop table consumibles;
-drop table curso;
+drop table cursos;
 drop table admin;
 
 create table usuario (
@@ -41,9 +41,11 @@ create table consumibles (
     FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
 
-create table curso (
-    code integer,
+create table cursos (
+    id_curso integer,
     nombre varchar(100),
+    direccion varchar(100),
+    descripcion varchar(200),
     PRIMARY KEY (code)
 );
 
