@@ -49,6 +49,10 @@ public class recuperaPassServlet extends HttpServlet {
         } else {
             pw.println("El usuario SI está en la base de datos->Te hemos enviado un correo con tu contraseña");
             String pass=UserBD.selectPass(email);
+            String asunto="Recuperación contraseña";
+            String mensaje="Su contraseña es : "+pass;
+            //Mail.sendEmail(asunto,mensaje);
+            
             //Clase de correos, metodo que genere el mensaje, pasandole la contraseña
         }
         
