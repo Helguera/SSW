@@ -67,48 +67,53 @@
     </center>
     <br><br><br>
 
-    <ul class="image-grid">
-        <%
-            ConnectionPool pool = ConnectionPool.getInstance();
-            Connection connection = pool.getConnection();
+    <div class="container">
+        <ul class="image-grid">
+            <%
+                ConnectionPool pool = ConnectionPool.getInstance();
+                Connection connection = pool.getConnection();
 
-            PrintWriter pw = response.getWriter();
+                PrintWriter pw = response.getWriter();
 
-            pw.println("<div class='container'>");
-            pw.println("<ul class='image-grid'>");
+                try {
+                    Statement statement = connection.createStatement();
+                    ResultSet products = statement.executeQuery("SELECT * FROM PRODUCTOS P JOIN IMPRESORAS3D I ON P.ID_PRODUCTO=I.ID_PRODUCTO");
+                    while (products.next()) {
+            %>
+            <li>
+                <img src='images/tienda1.jpg'/>
+                <h3><%=products.getString("modelo")%></h3>
+                <h2><%=products.getString("precio")%> €</h2>
+            </li>
 
-
-            try {
-                Statement statement = connection.createStatement();
-                ResultSet products = statement.executeQuery("SELECT * FROM PRODUCTOS P JOIN IMPRESORAS3D I ON P.ID_PRODUCTO=I.ID_PRODUCTO");
-                while (products.next()) {
-
-                    pw.println("<li>");
-                    pw.println("<img src='images/tienda1.jpg'/>");
-                    pw.println("<h3>"+products.getString("modelo")+"</h3>");
-                    pw.println("<h2>"+products.getString("precio")+" €"+"</h2>");
-
-                    pw.println("</li>");
+            <%}
+                } catch (Exception e) {
                 }
 
-            } catch (Exception e) {
+                try {
+                    Statement statement = connection.createStatement();
+                    ResultSet products = statement.executeQuery("SELECT * FROM PRODUCTOS P JOIN CONSUMIBLES C ON P.ID_PRODUCTO=C.ID_PRODUCTO");
+                    while (products.next()) {
+            %>
+            <li>
+                <img src='images/tienda2.jpg'/>
+                <h3><%=products.getString("nombre")%></h3>
+                <h2><%=products.getString("precio")%> €</h2>
+            </li>
 
-            }
+            <%}
+                } catch (Exception e) {
+                }%>
 
-            pw.println("</div>");
-            pw.println("</ul");
+        </ul>
 
+    </div>
 
-        %>
-    </ul>
-    
-</div>
-
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<footer class="footer">
-    <br>
-    <h2>© 3DImpresion 2018</h2>
-</footer>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer class="footer">
+        <br>
+        <h2>© 3DImpresion 2018</h2>
+    </footer>
 
 </body>
 
