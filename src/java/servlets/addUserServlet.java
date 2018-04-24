@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import roles.*;
 
 /**
@@ -65,6 +66,9 @@ public class addUserServlet extends HttpServlet {
             pw.println("El usuario SI está en la base de datos");
             System.out.println("El usuario SI está en la base de datos");
         }
+        
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("usuario", usuario);
         
         
         

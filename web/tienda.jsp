@@ -7,6 +7,7 @@
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.sql.*"%>
 <%@page import="servlets.ConnectionPool"%>
+<%@page import="roles.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -66,6 +67,11 @@
         <h3><a href="login.html">Login aquí</a></h3>
     </center>
     <br><br><br>
+    
+    <%
+        HttpSession sesion = request.getSession();
+        Producto[] carrito = (Producto[]) sesion.getAttribute("carrito");
+    %>
 
     <div class="container">
         <ul class="image-grid">
