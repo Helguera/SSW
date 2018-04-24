@@ -7,13 +7,14 @@
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.sql.*"%>
 <%@page import="servlets.ConnectionPool"%>
-<%@page import="roles.Producto"%>
+<%@page import="roles.*"%>
+<%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <meta charset="utf-8">
     <head>
-        <title>Impresion 3D</title>
+        <titl        Producto[] productos = (Producto[])request.getAttribute("productos");e>Impresion 3D</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
@@ -71,27 +72,31 @@
     <%
         HttpSession sesion = request.getSession();
         Producto[] carrito = (Producto[])sesion.getAttribute("carrito");
-        Producto[] productos = (Producto[])request.getAttribute("productos");
+        ArrayList<Producto> productos = (ArrayList<Producto>)request.getAttribute("productos");
     %>
 
     <div class="container">
         <ul class="image-grid">
             <%
-                for(int i=0; i<productos.length; i++){
-                    if(productos[i].getClass=="Consumible"){
+                for(int i=0; i<productos.size(); i++){
+                    Producto producto=productos.get(i);
+                    if(producto.getClass().getSimpleName()=="Consumible"){
             %>
             <li>
                 <img src='images/tienda1.jpg'/>
-                <h3><%=products.getString("modelo")%></h3>
-                <h2><%=products.getString("precio")%> €</h2>
+                <h3><%=((Consumible)producto).getNombre()%></h3>
+                <h3><%=((Consumible)producto).getMarca()%></h3>
+                <h2><%=producto.getPrecio()%> €</h2>
             </li>
 
             <%      }else{
             %>
             <li>
                 <img src='images/tienda2.jpg'/>
-                <h3><%=products.getString("nombre")%></h3>
-                <h2><%=products.getString("precio")%> €</h2>
+                <h3><%=((Consumible)producto).getMarca()%></h3>
+                <h3><%=((Impresora3d)producto).getModelo()%></h3>
+                <h3><%=((Impresora3d)producto).getTamaño()%></h3>
+                <h2><%=producto.getPrecio()%> €</h2>
             </li>
 
             <%}
@@ -106,7 +111,7 @@
     <footer class="footer">
         <br>
         <h2>© 3DImpresion 2018</h2>
-    </footer>
+    </footer>Consumible
 
 </body>
 
