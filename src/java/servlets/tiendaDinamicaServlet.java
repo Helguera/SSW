@@ -27,22 +27,15 @@ public class tiendaDinamicaServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ArrayList<Producto> productos = ProductoBD.getProductos();
+        request.setAttribute("productos", productos);       
+        request.getRequestDispatcher("tienda.jsp").forward(request, response);
 
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-    }
-    
-    protected void getProductos(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-         ArrayList<Producto> productos = ProductoBD.getProductos();
-        request.setAttribute("productos", productos);       
-        request.getRequestDispatcher("tienda.jsp").forward(request, response);
-    }
-    
-    
-    
+    } 
     
 }
