@@ -51,7 +51,7 @@ public class ProductoBD {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
             
-            if (rs.next()) {
+            while (rs.next()) {
                 Impresora3d imp = new Impresora3d();
                 imp.setId_producto(rs.getInt("id_producto"));
                 imp.setPrecio(rs.getDouble("precio"));
@@ -72,7 +72,7 @@ public class ProductoBD {
             ps = connection.prepareStatement(query);
             rs = ps.executeQuery();
             
-            if (rs.next()) {
+            while (rs.next()) {
                 Consumible cons = new Consumible();
                 cons.setId_producto(rs.getInt("id_producto"));
                 cons.setPrecio(rs.getDouble("precio"));
