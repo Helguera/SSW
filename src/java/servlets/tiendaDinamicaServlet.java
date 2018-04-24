@@ -22,7 +22,7 @@ import roles.ProductoBD;
  *
  * @author josealbertodelval
  */
-@WebServlet(urlPatterns = {"/addUserServlet"})
+@WebServlet(urlPatterns = {"/tiendaDinamicaServlet"})
 public class tiendaDinamicaServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,7 +35,7 @@ public class tiendaDinamicaServlet extends HttpServlet{
 
     }
     
-    protected void setProductos(HttpServletRequest request, HttpServletResponse response)
+    protected void getProductos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          ArrayList<Producto> productos = ProductoBD.getProductos();
         request.setAttribute("productos", productos);

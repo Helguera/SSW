@@ -8,13 +8,14 @@
 <%@page import="java.sql.*"%>
 <%@page import="servlets.ConnectionPool"%>
 <%@page import="roles.*"%>
+<%@page import="servlets.*"%>
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <meta charset="utf-8">
     <head>
-        <titl        Producto[] productos = (Producto[])request.getAttribute("productos");e>Impresion 3D</title>
+        <title>Impresion 3D</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
@@ -72,6 +73,8 @@
     <%
         HttpSession sesion = request.getSession();
         Producto[] carrito = (Producto[])sesion.getAttribute("carrito");
+        //LLAMADA AL METODO DEL SERVLET
+        tiendaDinamicaServlet.getProductos();
         ArrayList<Producto> productos = (ArrayList<Producto>)request.getAttribute("productos");
     %>
 
