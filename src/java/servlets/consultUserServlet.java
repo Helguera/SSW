@@ -10,11 +10,10 @@ import java.io.PrintWriter;
 import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import roles.UserBD;
 import roles.Usuario;
+import java.io.*;
 
 /**
  *
@@ -50,7 +49,11 @@ public class consultUserServlet extends HttpServlet{
         } else {
             pw.println("El usuario SI está en la base de datos->Comprobamos contraseña");
             //Usuario user=UserBD.selectUsuario(usuario.getEmail());
-            if(UserBD.selectPass(email).equals(usuario.getPassword())) pw.println("Login correcto");
+            if(UserBD.selectPass(email).equals(usuario.getPassword())){
+                HttpSession sesion = request.getSession();
+                sesion.setAttribute("usuario", usuario);
+                pw.println("Login correcto");
+            }
             else pw.println("Login incorrecto");
         }
         
