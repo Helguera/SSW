@@ -8,6 +8,7 @@ package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +37,7 @@ public class tiendaDinamicaServlet extends HttpServlet{
     
     protected void setProductos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Producto[] productos = ProductoDB.getProductos();
+         ArrayList<Producto> productos = ProductoBD.getProductos();
         request.setAttribute("productos", productos);
     }
     
