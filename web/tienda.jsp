@@ -74,7 +74,7 @@
         HttpSession sesion = request.getSession();
         Producto[] carrito = (Producto[])sesion.getAttribute("carrito");
         //LLAMADA AL METODO DEL SERVLET
-        tiendaDinamicaServlet.getProductos();
+        tiendaDinamicaServlet.getProductos(HttpServletRequest request);
         ArrayList<Producto> productos = (ArrayList<Producto>)request.getAttribute("productos");
     %>
 

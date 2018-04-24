@@ -35,7 +35,7 @@ public class tiendaDinamicaServlet extends HttpServlet{
 
     }
     
-    protected void getProductos(HttpServletRequest request, HttpServletResponse response)
+    protected void getProductos(HttpServletRequest request)
             throws ServletException, IOException {
          ArrayList<Producto> productos = ProductoBD.getProductos();
         request.setAttribute("productos", productos);
