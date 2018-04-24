@@ -60,6 +60,18 @@
 
 
         <div class="container">
+            <%
+                
+
+
+
+
+            %>
+
+
+
+
+
             <img src="images/cursoIniciacion.jpg" align="left" width="60%" alt="Impresion 3D" title="Curso iniciacion" class="image"/>
             <br>
             <center><h1>Curso de iniciación a la impresión 3D</h1>

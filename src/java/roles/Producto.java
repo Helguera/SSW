@@ -12,47 +12,29 @@ import java.io.Serializable;
  * @author josealbertodelval
  */
 public class Producto implements Serializable{
-    private int code;
+    private int id_producto;
     private double precio;
-    private String nombre;
-    private String descripcion;
+    
         
     //Constructor
     public Producto(){};
     
     //Setters
     
-    public void setCode(int code){
-        this.code=code;
+    public void setId_producto(int id_producto){
+        this.id_producto=id_producto;
     }
     public void setPrecio(double precio){
         this.precio=precio;
     }
    
-    
-    public void setNombre(String n){
-        this.nombre=n;
-    }
-    public void setDescripcion(String des){
-        this.descripcion=des;
-    }
-    
-    
-    
+
     //Getters
-    public int getCode( ){
-        return this.code;
+    public int getId_producto(){
+        return this.id_producto;
     }
     public double getPrecio(){
         return this.precio;
     }
-    
-    public String getNombre( ){
-        return this.nombre;
-    }
-    
-    public String getDescripcion(){
-        return this.descripcion;
-    }
-    
+   
 }

@@ -1,7 +1,7 @@
 drop table usuario;
-drop table productos;
 drop table impresoras3d;
 drop table consumibles;
+drop table productos;
 drop table cursos;
 drop table admin;
 
@@ -14,7 +14,8 @@ create table usuario (
     ciudad varchar(100),
     provincia varchar(100),
     cp varchar(100),
-    password varchar(100)
+    password varchar(100),
+    PRIMARY KEY (email)
 );
 
 
@@ -44,9 +45,10 @@ create table consumibles (
 create table cursos (
     id_curso integer,
     nombre varchar(100),
+    fecha date,
     direccion varchar(100),
     descripcion varchar(200),
-    PRIMARY KEY (code)
+    PRIMARY KEY (id_curso)
 );
 
 create table admin (
@@ -54,6 +56,8 @@ create table admin (
     password varchar(100),
     PRIMARY KEY (email)
 );
+
+
 
 
 

@@ -31,8 +31,8 @@ insert into productos values (6, 22);
 
 -- INSERTAR CURSOS --
 
-insert insertinto cursos values (1, 'Iniciacion a la impresion en 3D', 'C/Falsa 123, Valladolid', 'Curso para gente que quiera iniciarse en este mundo con ningun conocimiento del tema');
-insert insertinto cursos values (2, 'Curso avanzado de impresion 3d', 'C/Falsa 123, Valladolid', 'Curso para gente que quiera especializarse en este mundo con una base amplia sobre el tema');
+insert into cursos values (1, 'Iniciacion a la impresion en 3D', '2018-05-21', 'C/Falsa 123, Valladolid', 'Curso para gente que quiera iniciarse en este mundo con ningun conocimiento del tema');
+insert into cursos values (2, 'Curso avanzado de impresion 3d', '2018-05-22', 'C/Falsa 123, Valladolid', 'Curso para gente que quiera especializarse en este mundo con una base amplia sobre el tema');
 
 
 
