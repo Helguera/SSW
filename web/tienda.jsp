@@ -70,21 +70,15 @@
     
     <%
         HttpSession sesion = request.getSession();
-        Producto[] carrito = (Producto[]) sesion.getAttribute("carrito");
+        Producto[] carrito = (Producto[])sesion.getAttribute("carrito");
+        Producto[] productos = (Producto[])request.getAttribute("productos");
     %>
 
     <div class="container">
         <ul class="image-grid">
             <%
-                ConnectionPool pool = ConnectionPool.getInstance();
-                Connection connection = pool.getConnection();
-
-                PrintWriter pw = response.getWriter();
-
-                try {
-                    Statement statement = connection.createStatement();
-                    ResultSet products = statement.executeQuery("SELECT * FROM PRODUCTOS P JOIN IMPRESORAS3D I ON P.ID_PRODUCTO=I.ID_PRODUCTO");
-                    while (products.next()) {
+                for(int i=0; i<productos.length; i++){
+                    if(productos[i].getClass=="Consumible"){
             %>
             <li>
                 <img src='images/tienda1.jpg'/>
@@ -92,14 +86,7 @@
                 <h2><%=products.getString("precio")%> €</h2>
             </li>
 
-            <%}
-                } catch (Exception e) {
-                }
-
-                try {
-                    Statement statement = connection.createStatement();
-                    ResultSet products = statement.executeQuery("SELECT * FROM PRODUCTOS P JOIN CONSUMIBLES C ON P.ID_PRODUCTO=C.ID_PRODUCTO");
-                    while (products.next()) {
+            <%      }else{
             %>
             <li>
                 <img src='images/tienda2.jpg'/>
@@ -108,8 +95,8 @@
             </li>
 
             <%}
-                } catch (Exception e) {
-                }%>
+                    }
+                %>
 
         </ul>
 

@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import roles.*;
+import roles.ProductoBD;
+
 /**
  *
  * @author josealbertodelval
@@ -31,6 +33,14 @@ public class tiendaDinamicaServlet extends HttpServlet{
             throws ServletException, IOException {
 
     }
+    
+    protected void setProductos(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Producto[] productos = ProductoDB.getProductos();
+        request.setAttribute("productos", productos);
+    }
+    
+    
     
     
 }
