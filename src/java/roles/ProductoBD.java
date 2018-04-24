@@ -27,9 +27,8 @@ public class ProductoBD {
             Producto pr = null;
             if (rs.next()) {
                 pr = new Producto();
-                pr.setCode(rs.getInt("Codigo"));
+                pr.setId_producto(rs.getInt("Id_producto"));
                 pr.setPrecio(rs.getDouble("Precio"));
-                pr.setNombre(rs.getString("Nombre"));
             }
             rs.close();
             ps.close();
