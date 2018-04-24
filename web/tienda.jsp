@@ -85,7 +85,7 @@
             <%
                 for(int i=0; i<productos.size(); i++){
                     Producto producto=productos.get(i);
-                    if(producto.getClass().getSimpleName()=="Consumible"){
+                    if(producto.getClass().getSimpleName().equals("Consumible")){
             %>
             <li>
                 <img src='images/tienda1.jpg'/>
