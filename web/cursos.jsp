@@ -73,15 +73,17 @@
             %>
                     <img src="images/cursoIniciacion.jpg" align="left" width="60%" alt="Impresion 3D" title="Curso iniciacion" class="image"/>
                     <br>
+                    <br>
+                    <br>
+                    <br>
                     <center><h1><%=curso.getNombre()%></h1>
-                    <h2><%=curso.getCode()%></h2>
                     <br>
                     <p><%=curso.getDescripcion()%></p>
                     <br>
                     <input type="submit" value="Apuntarse al curso" onclick = "location.href='login.html'"/>
                     </center>
             <%}
-                }
+                
             %>
 
                 
@@ -91,29 +93,7 @@
 
 
 
-            <img src="images/cursoIniciacion.jpg" align="left" width="60%" alt="Impresion 3D" title="Curso iniciacion" class="image"/>
-            <br>
-            <center><h1>Curso de iniciación a la impresión 3D</h1>
-                <br>
-                <p>Con este curso te iniciarás en el mundo de la impresión 3D y aprenderás todo lo necesario
-                    para realizar tus primeras piezas y conocer los aspectos tecnicos básicos para manejar una
-                    impresora 3D.</p>
-                <br>
-                <input type="submit" value="Apuntarse al curso" onclick = "location.href = 'login.html'"/>
-            </center>
-
-            <br><br><br><br><br><br><br><br><br><br>
-
-            <img src="images/cursoAvanzado.jpg" align="right" width="60%" alt="Impresion 3D" title="Curso avanzado" class="image"/>
-            <center><h1>Curso avanzado de impresión 3D</h1>
-                <br>
-                <p>Con este curso obtendrás los conocimientos necesarios para desenvolverte con soltura en el ámbito de la
-                    impresión 3D, conocer los softwares de manejo de impresoras y detectar, analizar y solucionar problemas típicos
-                    en la impresión 3D.</p>
-                </br>
-                <input type="submit" value="Apuntarse al curso" onclick = "location.href = 'login.html'"/>
-            </center>
-        </div>
+            
 
         <br><br><br><br><br><br><br><br><br>
 

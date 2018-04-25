@@ -84,7 +84,6 @@
             <li>
                 <img src='images/tienda2.jpg'/>
                 <h3><%=((Consumible)producto).getNombre()%></h3>
-                <h3><%=((Consumible)producto).getMarca()%></h3>
                 <h2><%=producto.getPrecio()%> €</h2>
             </li>
 
@@ -92,9 +91,7 @@
             %>
             <li>
                 <img src='images/tienda1.jpg'/>
-                <h3><%=((Impresora3d)producto).getMarca()%></h3>
                 <h3><%=((Impresora3d)producto).getModelo()%></h3>
-                <h3><%=((Impresora3d)producto).getTamaño()%></h3>
                 <h2><%=producto.getPrecio()%> €</h2>
             </li>
 
