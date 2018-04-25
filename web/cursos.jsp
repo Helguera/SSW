@@ -75,7 +75,6 @@
                     <br>
                     <br>
                     <br>
-                    <br>
                     <center><h1><%=curso.getNombre()%></h1>
                     <br>
                     <p><%=curso.getDescripcion()%></p>
