@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="roles.*"%>
+<%@page import="servlets.*"%>
+<%@page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
     <meta charset="utf-8">
@@ -60,13 +63,30 @@
 
 
         <div class="container">
-            <%
+            <ul class="image-grid">
+                <%
+                    HttpSession sesion = request.getSession();
+                    ArrayList<Curso> cursos = (ArrayList<Curso>)request.getAttribute("cursos");
+        
+                    for(int i=0; i<cursos.size(); i++){
+                        Curso curso=cursos.get(i);
+                        
+                %>
+                <li>
+                    <img src='images/tienda2.jpg'/>
+                    <h3><%=curso.getNombre()%></h3>
+                    <h3><%=curso.getFecha()%></h3>
+                    <h2><%=curso.getDireccion()%> €</h2>
+                    <h2><%=curso.getDescripcion()%> €</h2>
+                </li>
+
+                <%}
+                        }
+                %>
+
+        </ul>
                 
-
-
-
-
-            %>
+    </div>
 
 
 

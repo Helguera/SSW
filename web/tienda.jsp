@@ -69,20 +69,14 @@
         <h3><a href="login.html">Login aquí</a></h3>
     </center>
     <br><br><br>
-    
-    <%
-        HttpSession sesion = request.getSession();
-        Producto[] carrito = (Producto[])sesion.getAttribute("carrito");
-        
-        ArrayList<Producto> productos = (ArrayList<Producto>)request.getAttribute("productos");
-        
-    %>
-    
-    
 
     <div class="container">
         <ul class="image-grid">
             <%
+                HttpSession sesion = request.getSession();
+                Producto[] carrito = (Producto[])sesion.getAttribute("carrito");
+                ArrayList<Producto> productos = (ArrayList<Producto>)request.getAttribute("productos");
+        
                 for(int i=0; i<productos.size(); i++){
                     Producto producto=productos.get(i);
                     if(producto.getClass().getSimpleName().equals("Consumible")){
