@@ -38,12 +38,12 @@
                     </li>
                     <li>
                         <h1>
-                            <a href="tienda.jsp">Tienda</a>
+                            <a href="tienda">Tienda</a>
                         </h1>
                     </li>
                     <li>
                         <h1>
-                            <a href="cursos.jsp">Cursos</a>
+                            <a href="cursos">Cursos</a>
                         </h1>
                     </li>
                     <li>

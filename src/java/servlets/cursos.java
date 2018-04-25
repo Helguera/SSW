@@ -21,9 +21,9 @@ import roles.ProductoBD;
  *
  * @author josealbertodelval
  */
-@WebServlet(urlPatterns = {"/cursosDinamicaServlet"})
+@WebServlet(urlPatterns = {"/cursos"})
 
-public class cursosDinamicosServlet extends HttpServlet{
+public class cursos extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
