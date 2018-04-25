@@ -55,16 +55,16 @@ public class addUserServlet extends HttpServlet {
         usuario.setCp(cp);
         
         PrintWriter pw = response.getWriter();
-        pw.println(usuario.getEmail());
         
         if (UserBD.userExists(usuario) == false) {
             pw.println("El usuario NO está en la base de datos");
+            pw.println("Ha sido registrado correctamente");
             UserBD.insert(usuario);
 
             
         } else {
-            pw.println("El usuario SI está en la base de datos");
-            System.out.println("El usuario SI está en la base de datos");
+            pw.println("El usuario ya se encuentra en nuestra base de datos");
+            System.out.println("El usuario ya se encuentra en nuestra base de datos");
         }
         
         HttpSession sesion = request.getSession();
