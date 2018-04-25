@@ -74,7 +74,7 @@
                     <img src="images/cursoIniciacion.jpg" align="left" width="60%" alt="Impresion 3D" title="Curso iniciacion" class="image"/>
                     <br>
                     <center><h1><%=curso.getNombre()%></h1>
-                    <h2><%=curso.getId()%></h2>
+                    <h2><%=curso.getCode()%></h2>
                     <br>
                     <p><%=curso.getDescripcion()%></p>
                     <br>
