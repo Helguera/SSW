@@ -45,8 +45,6 @@ create table consumibles (
 create table cursos (
     id_curso integer,
     nombre varchar(100),
-    fecha date,
-    direccion varchar(100),
     descripcion varchar(200),
     PRIMARY KEY (id_curso)
 );

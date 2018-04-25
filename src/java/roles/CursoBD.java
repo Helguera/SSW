@@ -6,6 +6,7 @@
 package roles;
 
 import java.sql.*;
+import java.util.ArrayList;
 import servlets.*;
 /**
  *
@@ -13,7 +14,7 @@ import servlets.*;
  */
 public class CursoBD {
     
-    public static int insert(Curso curso){
+    /*public static int insert(Curso curso){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
@@ -35,7 +36,6 @@ public class CursoBD {
             ps = connection.prepareStatement(query);
             ps.setInt(1, curso.getCode());
             ps.setString(2, curso.getNombre());
-            ps.setDouble(3, curso.getPrecio());
             //Ejecutamos el query
             
             int res = ps.executeUpdate();
@@ -47,7 +47,7 @@ public class CursoBD {
             return 0;
         }
          
-    }
+    }*/
     
     public static boolean cursoExists(Curso curso) {
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -97,4 +97,33 @@ public class CursoBD {
             return null;
         }
     }*/
+
+    public static ArrayList<Curso> getCursos() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Curso> cursos=new ArrayList<Curso>();
+        String query = "SELECT * FROM CURSOS";
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Curso c = new Curso();
+                c.setCode(rs.getInt("id_curso"));
+                c.setDescripcion(rs.getString("descripcion"));
+                c.setNombre(rs.getString("nombre"));
+                
+                cursos.add(c);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return cursos;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

@@ -16,7 +16,7 @@ public class Curso implements Serializable{
     
     private int code;
     private String nombre;
-    private double precio;
+    private String descripcion;
         
     //Constructor
     public Curso(){};
@@ -32,8 +32,8 @@ public class Curso implements Serializable{
         this.nombre=n;
     }
     
-    public void setPrecio(double precio){
-        this.precio = precio;
+    public void setDescripcion(String d){
+        this.descripcion = d;
     }
     
     
@@ -47,8 +47,8 @@ public class Curso implements Serializable{
         return this.nombre;
     }
     
-    public double getPrecio( ){
-        return this.precio;
+    public String getDescripcion( ){
+        return this.descripcion;
     }
     
 }
