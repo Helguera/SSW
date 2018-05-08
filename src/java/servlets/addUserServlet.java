@@ -70,6 +70,8 @@ public class addUserServlet extends HttpServlet {
         } else {        
             UserBD.insert(usuario);
             pw.println("Ha sido registrado correctamente");
+            HttpSession sesion = request.getSession();
+            response.sendRedirect(sesion.getAttribute("urlAnterior").toString());
         }
         
         HttpSession sesion = request.getSession();

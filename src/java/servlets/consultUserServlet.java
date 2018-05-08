@@ -39,22 +39,20 @@ public class consultUserServlet extends HttpServlet{
         usuario.setPassword(pass);
         
         PrintWriter pw = response.getWriter();
-        pw.println(UserBD.selectPass(email)+" de la base");
 
 
         
         if (UserBD.userExists(usuario) == false) {
-            pw.println("El usuario NO está en la base de datos->Error en loggin");
+            pw.println("El usuario NO existe en la base de datos.");
             
         } else {
-            pw.println("El usuario SI está en la base de datos->Comprobamos contraseña");
-            //Usuario user=UserBD.selectUsuario(usuario.getEmail());
             if(UserBD.selectPass(email).equals(usuario.getPassword())){
                 HttpSession sesion = request.getSession();
                 sesion.setAttribute("usuario", usuario);
                 pw.println("Login correcto");
+                response.sendRedirect(sesion.getAttribute("urlAnterior").toString());
             }
-            else pw.println("Login incorrecto");
+            else pw.println("Contraseña incorrecta");
         }
         
     }

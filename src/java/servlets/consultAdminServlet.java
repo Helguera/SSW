@@ -40,22 +40,18 @@ public class consultAdminServlet extends HttpServlet {
         admin.setPassword(pass);
         
         PrintWriter pw = response.getWriter();
-        pw.println(AdminBD.selectPass(email)+" de la base");
-
 
         
         if (AdminBD.adminExists(admin) == false) {
-            pw.println("No se ha encontrado el administrador en la BD->Error en loggin");
+            pw.println("El administrador no existe en la base de datos");
             
         } else {
-             pw.println("El administrador SI está en la base de datos->Comprobamos contraseña");
-            //Usuario user=UserBD.selectUsuario(usuario.getEmail());
             if(AdminBD.selectPass(email).equals(admin.getPassword())){
                 HttpSession sesion = request.getSession();
                 sesion.setAttribute("administrador", admin);
                 pw.println("Login correcto");
             }
-            else pw.println("Login incorrecto");
+            else pw.println("Contraseña incorrecta.");
         }
     }
 }

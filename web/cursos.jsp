@@ -60,11 +60,27 @@
             </nav>
 
         </header>
+        
+    <%
+    HttpSession sesion = request.getSession();
+    if(sesion.getAttribute("usuario")==null){
+        sesion.setAttribute("urlAnterior", "cursos");
+    %>
+    <center>
+        <div class="container">
+            <h1>Para apuntarse a un curso es necesario haber iniciado sesión.</h1>
+        </div>
+        <h3><a href="login.html">Iniciar sesión</a></h3>
+        <h3><a href="registro.html">Registrarme</a></h3>
+    </center>
+    <br><br><br>
+    <%
+    }
+    %>
 
 
         <div class="container">
             <%
-                HttpSession sesion = request.getSession();
                 ArrayList<Curso> cursos = (ArrayList<Curso>)request.getAttribute("cursos");
         
                 for(int i=0; i<cursos.size(); i++){

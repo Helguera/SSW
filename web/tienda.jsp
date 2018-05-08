@@ -62,18 +62,26 @@
 
         </header>
         <br><br><br>
+    <%
+    HttpSession sesion = request.getSession();
+    if(sesion.getAttribute("usuario")==null){
+        sesion.setAttribute("urlAnterior", "tienda");
+    %>
     <center>
         <div class="container">
-            <h1>¡Haz login , y elige cualquiera de nuestros productos!</h1>
+            <h1>Para realizar compras es necesario haber iniciado sesión.</h1>
         </div>
-        <h3><a href="login.html">Login aquí</a></h3>
+        <h3><a href="login.html">Iniciar sesión</a></h3>
+        <h3><a href="registro.html">Registrarme</a></h3>
     </center>
     <br><br><br>
+    <%
+    }
+    %>
 
     <div class="container">
         <ul class="image-grid">
             <%
-                HttpSession sesion = request.getSession();
                 Producto[] carrito = (Producto[])sesion.getAttribute("carrito");
                 ArrayList<Producto> productos = (ArrayList<Producto>)request.getAttribute("productos");
         
