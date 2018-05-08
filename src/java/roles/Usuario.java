@@ -99,6 +99,20 @@ public class Usuario implements Serializable{
     public String getCp(){
         return this.cp;
     }
+    
+    public boolean compruebaPass(String pass2){
+        if (this.password.equals(pass2)){
+           return true;
+        }
+        return false;
+    }
+    
+    public boolean compruebaCampos(){
+        if (this.nombre.equals("") || this.apellidos.equals("") || this.email.equals("") || this.password.equals("") || this.calle.equals("") || this.resto.equals("") || this.poblacion.equals("") || this.provincia.equals("") || this.cp.equals("")){
+           return false;
+        }
+        return true;
+    }
    
     
    

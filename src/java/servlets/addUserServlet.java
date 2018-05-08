@@ -42,7 +42,6 @@ public class addUserServlet extends HttpServlet {
         usuario.setEmail(email);
         String pass=request.getParameter("password");
         usuario.setPassword(pass);
-
         String calle=request.getParameter("calle");
         usuario.setCalle(calle);
         String resto=request.getParameter("resto");
@@ -56,15 +55,21 @@ public class addUserServlet extends HttpServlet {
         
         PrintWriter pw = response.getWriter();
         
-        if (UserBD.userExists(usuario) == false) {
-            pw.println("El usuario NO está en la base de datos");
-            pw.println("Ha sido registrado correctamente");
-            UserBD.insert(usuario);
-
+        
+        if (usuario.compruebaPass(request.getParameter("password2"))==false) {
+            pw.println("Las contraseñas no coinciden");
+        }
             
-        } else {
-            pw.println("El usuario ya se encuentra en nuestra base de datos");
-            System.out.println("El usuario ya se encuentra en nuestra base de datos");
+        else if (usuario.compruebaCampos()==false) {
+            pw.println("Todos los campos son requeridos");
+        }
+            
+        else if(UserBD.userExists(usuario) == true) {
+            pw.println("El usuario ya existía en la base de datos");
+
+        } else {        
+            UserBD.insert(usuario);
+            pw.println("Ha sido registrado correctamente");
         }
         
         HttpSession sesion = request.getSession();
