@@ -22,7 +22,7 @@ public class AdminBD {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "SELECT email FROM ADMIN WHERE email = ?";
+        String query = "SELECT email FROM ADMINS WHERE email = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, admin.getEmail());
@@ -44,7 +44,7 @@ public class AdminBD {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "SELECT * FROM ADMIN WHERE email = ?";
+        String query = "SELECT * FROM ADMINS WHERE email = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);
@@ -73,7 +73,7 @@ public class AdminBD {
         ResultSet rs = null;
         String password="";
 
-        String query = "SELECT password FROM ADMIN WHERE email = ?";
+        String query = "SELECT password FROM ADMINS WHERE email = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);

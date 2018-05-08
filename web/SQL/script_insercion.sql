@@ -36,8 +36,8 @@ insert into productos values (6, 22);
     
     -- INSERTAR ADMIN --
     
-    insert into admin values (1, 'valladolid@gmail.com','12345');
-    insert into admin values (2, 'cantalejo@gmail.com','11111');
+    insert into admins values (1, 'valladolid@gmail.com','1234');
+    insert into admins values (2, 'cantalejo@gmail.com','1111');
 
 
 

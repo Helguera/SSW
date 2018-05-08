@@ -3,7 +3,7 @@ drop table impresoras3d;
 drop table consumibles;
 drop table productos;
 drop table cursos;
-drop table admin;
+drop table admins;
 
 create table usuario (
     nombre varchar(100),
@@ -49,7 +49,7 @@ create table cursos (
     PRIMARY KEY (id_curso)
 );
 
-create table admin (
+create table admins (
     email varchar(100),
     password varchar(100),
     PRIMARY KEY (email)
