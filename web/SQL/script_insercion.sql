@@ -29,11 +29,15 @@ insert into productos values (6, 22);
     insert into consumibles values (5, 'PLA - Azul', 'BQ');
     insert into consumibles values (6, 'ABS - Verde', 'FormFutura');
 
--- INSERTAR CURSOS --
+    -- INSERTAR CURSOS --
 
-insert into cursos values (1, 'Iniciacion a la impresion en 3D', 'C/Falsa 123, Valladolid - 2018-05-21 - 16:00 - Curso para gente que quiera iniciarse en este mundo con ningun conocimiento del tema');
-insert into cursos values (2, 'Curso avanzado de impresion 3D', 'C/Falsa 123, Valladolid - 2018-05-22 - 16:00 - Curso para gente que quiera especializarse en este mundo con una base amplia sobre el tema');
-
+    insert into cursos values (1, 'Iniciacion a la impresion en 3D', 'C/Falsa 123, Valladolid - 2018-05-21 - 16:00 - Curso para gente que quiera iniciarse en este mundo con ningun conocimiento del tema');
+    insert into cursos values (2, 'Curso avanzado de impresion 3D', 'C/Falsa 123, Valladolid - 2018-05-22 - 16:00 - Curso para gente que quiera especializarse en este mundo con una base amplia sobre el tema');
+    
+    -- INSERTAR ADMIN --
+    
+    insert into admin values (1, 'valladolid@gmail.com','12345');
+    insert into admin values (2, 'cantalejo@gmail.com','11111');
 
 
 
