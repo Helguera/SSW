@@ -56,21 +56,11 @@
      
          <center><h1>¡Envíe sus archivos!</h1></center>
          <center><h3>Rellene la siguiente información:</h3></center>
-        
+         <center><h3><a href="login.html">Iniciar sesión</a></h3></center>
+         <center><h3><a href="registro.html">Registrarme</a></h3></center>
             
-            <p>Nombre: <input name="nombre" type="text" placeholder="Tu nombre..."></p>
-            <p>Apellidos: <input name="Apellidos" type="text" placeholder="Tus apellidos...">
-            <p>E-mail: <input name="email" type="text" placeholder="Tu email..."></p>
-            <div>
-                <label>Diseño / impresión :  </label>
-                <select name="servicio">
-                    <option value="TE">Solicitar diseño</option>
-                    <option value="VA">Solicitar impresión</option>
-                    
-                    <option selected="selected">Selecciona una opción...</option>
-                </select>
-
-            </div><br>
+            <form method="POST" action="upload" enctype="multipart/form-data"> 
+            
             <div>
             <textarea name="comentarios" rows="10" cols="40">Descripción de su solicitud.</textarea>
             </div>
@@ -84,6 +74,8 @@
             <p>
                 <input type = "submit" value = "Enviar" onclick = "location.href='index.html'"/>
             </p>
+            </form>
+
      </div>
    
      <br>
