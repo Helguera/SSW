@@ -49,7 +49,7 @@ public class consultAdminServlet extends HttpServlet {
             if(AdminBD.selectPass(email).equals(admin.getPassword())){
                 HttpSession sesion = request.getSession();
                 sesion.setAttribute("administrador", admin);
-                pw.println("Login correcto");
+                response.sendRedirect("admin");
             }
             else pw.println("Contraseña incorrecta.");
         }
