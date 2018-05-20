@@ -24,6 +24,9 @@
             HttpSession sesion = request.getSession();
             if (sesion.getAttribute("administrador") != null) {
         %>
+        <%
+            if (sesion.getAttribute("tipo") == null) {
+        %>
         <div class="container">
 
             <h1><center>¡Bienvenido al panel de administración!</center></h1>
@@ -46,6 +49,9 @@
             </form>
 
         </div>
+        <%
+            }
+        %>
         <%
         } else {
         %>

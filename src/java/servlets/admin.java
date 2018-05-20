@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import roles.*;
 
-
 /**
  *
  * @author javier
@@ -23,7 +22,6 @@ import roles.*;
 @WebServlet(name = "admin", urlPatterns = {"/admin"})
 public class admin extends HttpServlet {
 
-  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -36,11 +34,16 @@ public class admin extends HttpServlet {
         request.getRequestDispatcher("admin.jsp").forward(request, response);
     }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String tipo = request.getParameter("zona");
+        if (tipo == null) {
+            request.getRequestDispatcher("admin.jsp").forward(request, response);;
+        } else {
+            request.setAttribute(tipo, tipo);
+            request.getRequestDispatcher("admin.jsp").forward(request, response);
+        }
     }
 
     @Override
