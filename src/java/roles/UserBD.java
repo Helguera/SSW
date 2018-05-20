@@ -10,6 +10,7 @@ package roles;
  * @author josealbertodelval
  */
 import java.sql.*;
+import java.util.ArrayList;
 import servlets.*;
 
 public class UserBD {
@@ -19,7 +20,7 @@ public class UserBD {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         String query = "insert into usuario (nombre, apellido,email,calle,numero,ciudad,provincia,cp,password) "
-                + "VALUES('"+user.getNombre()+"','"+user.getApellidos()+"','"+user.getEmail()+"','"+user.getCalle()+"','"+user.getResto()+"','"+user.getPoblacion()+"','"+user.getProvicia()+"','"+user.getCp()+"','"+user.getPassword()+"')";
+                + "VALUES('" + user.getNombre() + "','" + user.getApellidos() + "','" + user.getEmail() + "','" + user.getCalle() + "','" + user.getResto() + "','" + user.getPoblacion() + "','" + user.getProvicia() + "','" + user.getCp() + "','" + user.getPassword() + "')";
         //String query = "insert into usuario values ('"+user.getNombre()+"','"+user.getApellidos()+"','"+user.getEmail()+"','"+user.getCalle()+"',"+user.getResto()+",'"+user.getPoblacion()+"',"+ user.getCp()+",'"+user.getPassword()+"')";
         try {
             Statement statement = connection.createStatement();
@@ -27,12 +28,10 @@ public class UserBD {
         } catch (Exception w) {
 
         }
-        
-    
+
         try {
-            
+
             //Preparamos el query
-            
             ps = connection.prepareStatement(query);
             ps.setString(1, user.getNombre());
             ps.setString(2, user.getApellidos());
@@ -42,9 +41,8 @@ public class UserBD {
             ps.setString(6, user.getPoblacion());
             ps.setString(7, user.getCp());
             ps.setString(8, user.getPassword());
-            
+
             //Ejecutamos el query
-            
             int res = ps.executeUpdate();
             ps.close();
             pool.freeConnection(connection);
@@ -53,8 +51,9 @@ public class UserBD {
             e.printStackTrace();
             return 0;
         }
-         
+
     }
+
     public static boolean userExists(Usuario usuario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -74,7 +73,7 @@ public class UserBD {
             e.printStackTrace();
             return false;
         }
-        
+
     }
 
     public static Usuario selectUsuario(String email) {
@@ -89,8 +88,8 @@ public class UserBD {
             rs = ps.executeQuery();
             Usuario usuario = null;
             if (rs.next()) {
-                usuario = new Usuario();               
-                
+                usuario = new Usuario();
+
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setApellidos(rs.getString("apellido"));
                 usuario.setEmail(rs.getString("email"));
@@ -111,26 +110,64 @@ public class UserBD {
             return null;
         }
     }
+
     public static String selectPass(String email) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String password="";
+        String password = "";
 
         String query = "SELECT password FROM usuario WHERE email = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);
             rs = ps.executeQuery();
-            
+
             if (rs.next()) {
-                password=rs.getString("password");               
+                password = rs.getString("password");
             }
             rs.close();
             ps.close();
             pool.freeConnection(connection);
             return password;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static ArrayList<Usuario> getUsuarios() {
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM usuario";
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            Usuario usuario = null;
+            while (rs.next()) {
+                usuario = new Usuario();
+
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellidos(rs.getString("apellido"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setPassword(rs.getString("password"));
+
+                usuario.setCalle(rs.getString("calle"));
+                usuario.setResto(rs.getString("numero"));
+                usuario.setPoblacion(rs.getString("ciudad"));
+                usuario.setProvicia(rs.getString("provincia"));
+                usuario.setCp(rs.getString("cp"));
+                
+                usuarios.add(usuario);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return usuarios;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
