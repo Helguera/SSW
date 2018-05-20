@@ -38,11 +38,12 @@
             </div>
             <br><br><br>
             <center><input type="submit" value="Seleccionar"></center>
-            
-
         </form>
-        <br><br>
-        <center><input value="Cerrar Sesión"></center>
+        
+        <form action="logout" method="post">
+            <br><br><br>
+            <center><input type="submit" value="Cerrar Sesión"></center>
+        </form>
         
     </div>
     <%
