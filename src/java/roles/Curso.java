@@ -1,33 +1,26 @@
 package roles;
+
 import java.io.Serializable;
+import java.util.Date;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author josealbertodelval
- */
 public class Curso implements Serializable{
-    
     
     private int code;
     private String nombre;
     private String descripcion;
+    private Date fecha;
+    private float precio;
         
+    
     //Constructor
     public Curso(){};
     
-    //Setters
     
+    //Setters
     public void setCode(int code){
         this.code=code;
     }
    
-    
     public void setNombre(String n){
         this.nombre=n;
     }
@@ -36,6 +29,13 @@ public class Curso implements Serializable{
         this.descripcion = d;
     }
     
+    public void setFecha(Date f){
+        this.fecha = f;
+    }
+    
+    public void setPrecio(float p){
+        this.precio = p;
+    }
     
     
     //Getters
@@ -51,4 +51,11 @@ public class Curso implements Serializable{
         return this.descripcion;
     }
     
+    public Date getFecha(){
+        return this.fecha;
+    }
+    
+    public float getPrecio(){
+        return this.precio;
+    }
 }
