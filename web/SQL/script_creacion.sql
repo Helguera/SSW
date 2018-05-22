@@ -1,10 +1,12 @@
 drop table usuario;
+drop table productos;
+drop table archivos;
 drop table impresoras3d;
 drop table consumibles;
-drop table productos;
 drop table cursos;
 drop table admins;
 drop table userCursos;
+
 
 create table usuario (
     nombre varchar(100),

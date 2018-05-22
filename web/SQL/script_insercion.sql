@@ -38,6 +38,7 @@ insert into cursos values (2, 'Curso avanzado de impresion 3D', 'C/Falsa 123, Va
     
 insert into admins values ('valladolid@gmail.com','1234');
 insert into admins values ('cantalejo@gmail.com','1111');
+insert into admins values ('1','1');
 
 
 
