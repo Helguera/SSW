@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import roles.*;
 
+
 @WebServlet(name = "Upload", urlPatterns = {"/upload"})
 @MultipartConfig
 public class Upload extends HttpServlet {
@@ -46,7 +47,7 @@ public class Upload extends HttpServlet {
             Usuario u =(Usuario) sesion.getAttribute("usuario");
             ar.setUsuario(u.getEmail());
             
-            if(archExists(ar)==false)   insert(ar);
+            if(ArchivosBD.archExists(ar)==false)   ArchivosBD.insert(ar);
             
             OutputStream out = null;
             InputStream fileContent = null;

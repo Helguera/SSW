@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author josealbertodelval
  */
-class Archivo implements Serializable{
+public class Archivo implements Serializable{
     private String ruta;
     private String nombre;
     private String usuario;
