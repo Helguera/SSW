@@ -25,6 +25,14 @@ create table productos (
     PRIMARY KEY (id_producto) 
 );
 
+create table archivos (
+    nombre varchar(100),
+    ruta varchar(100),
+    usuario varchar(100),
+    PRIMARY KEY (nombre),
+    FOREIGN KEY (nombre) REFERENCES usuario(email)
+);
+
 create table impresoras3d (
     id_producto integer,
     marca varchar(100),

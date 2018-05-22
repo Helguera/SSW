@@ -82,10 +82,15 @@
             }
         %>
             
-            <form method="POST" action="upload" enctype="multipart/form-data"> 
+            <form method="post" action="upload" enctype="multipart/form-data"> 
             
             <div>
-            <textarea name="comentarios" rows="10" cols="40">Descripción de su solicitud.</textarea>
+                    <h3>Rellena los siguientes campos y selecciona un archivo..</h3>
+                    <input type="text" name="nameArch" placeholder="Nombre del archivo tal cual esta en tu drectorio..."/>
+
+                    <input type="text" name="description" placeholder="Comentarios acerca del archivo..."/>
+
+
             </div>
             
            

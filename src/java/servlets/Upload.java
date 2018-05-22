@@ -16,63 +16,68 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import roles.*;
 
 @WebServlet(name = "Upload", urlPatterns = {"/upload"})
 @MultipartConfig
 public class Upload extends HttpServlet {
     
-    protected void processRequest(HttpServletRequest request,
+    protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 //String path = "C:\\Users\\Pepe\\Documents\\sswRepository";
-        String path = getServletContext().getRealPath("/images");
-        try (PrintWriter out = response.getWriter()) {
+        String path = getServletContext().getRealPath("/archivos");
+        
+            //Recogemos parametros del formulario 
+            
             Part filePart = request.getPart("file");
-            String fileName = getFileName(filePart);
-            InputStream fileContent = filePart.getInputStream();
-            OutputStream outFile = null;
-            out.println("<!DOCTYPE html>");
-            out.println("<html><head>");
-            out.println("<title>Servlet Upload</title></head>");
-            out.println("<body>");
+            String fileName = request.getParameter("nameArch");
+            String description = request.getParameter("description");
+            
+            //No entiendo el porque de este error.
+            
+            Archivo ar = new Archivo();
+            ar.setRuta("/archivos/"+fileName);
+            ar.setNombre(fileName);
+            HttpSession sesion = request.getSession();
+            Usuario u =(Usuario) sesion.getAttribute("usuario");
+            ar.setUsuario(u.getEmail());
+            
+            if(archExists(ar)==false)   insert(ar);
+            
+            OutputStream out = null;
+            InputStream fileContent = null;
+            final PrintWriter writer = response.getWriter();
+            
             try {
-                outFile = new FileOutputStream(new File(path + File.separator
-                        + fileName));
+                out = new FileOutputStream(new File(path + File.separator + fileName));
+                fileContent = filePart.getInputStream();
+
                 int read = 0;
                 byte[] bytes = new byte[1024];
+                
                 while ((read = fileContent.read(bytes)) != -1) {
-                    outFile.write(bytes, 0, read);
+                    out.write(bytes, 0, read);
                 }
-                out.println("Fichero " + fileName + " creado");
+                //writer.println("New file " + fileName + " created at " + path);
+                response.sendRedirect("index.html");
+
+                
             } catch (FileNotFoundException fne) {
-                out.println("Error al subir el fichero:");
-                out.println("<br/>" + fne.getMessage());
+                
             } finally {
-                if (outFile != null) {
-                    outFile.close();
+                if (out != null) {
+                    out.close();
                 }
                 if (fileContent != null) {
                     fileContent.close();
                 }
-                if (out != null) {
-                    out.println("</body></html>");
-                    out.close();
-                }
+                
             }
-        }
+        
     }
 
-    private static String getFileName(Part part) {
-        for (String cd : part.getHeader("content-disposition").split(";")) {
-            if (cd.trim().startsWith("filename")) {
-                String fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"",
-                        "");
-                return fileName.substring(fileName.lastIndexOf('/')
-                        + 1).substring(fileName.lastIndexOf('\\') + 1);
-            }
-        }
-        return null;
-    }
 }
