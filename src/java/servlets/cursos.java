@@ -37,7 +37,28 @@ public class cursos extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession sesion = request.getSession();
+        PrintWriter pw = response.getWriter();
+        response.setContentType("text/html");
+        if(sesion.getAttribute("usuario")!=null){
+            if(addCursoBD.userExists((Usuario) sesion.getAttribute("usuario")) == true) {
+            //pw.println("El usuario ya existía en la base de datos");
+            pw.println("<html><head><title>El usuario ya estaba apuntado.</title></head><body>");   
+            pw.println("<h1>El usuario ya estaba apuntado.</h1>");            
 
-    } 
+            pw.println("<h3><a href=\"index.html\">Volver a la página principal.</a></h3>");
+            pw.println("</body></html>");
+
+            } else {        
+            addCursoBD.insert((Usuario) sesion.getAttribute("usuario"));
+            pw.println("<html><head><title>Cursos</title></head><body>"); 
+            pw.println("<h1>Se ha apuntado correctamente al curso</h1>"); 
+            pw.println("<h3><a href=\"index.html\">Volver a la página principal.</a></h3>");
+            pw.println("</body></html>");	
+            //response.sendRedirect("registro.html");
+        }
+
+    }
+    }
     
 }

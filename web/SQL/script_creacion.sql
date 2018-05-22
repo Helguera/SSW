@@ -4,6 +4,7 @@ drop table consumibles;
 drop table productos;
 drop table cursos;
 drop table admins;
+drop table userCursos
 
 create table usuario (
     nombre varchar(100),
@@ -62,6 +63,12 @@ create table admins (
     password varchar(100),
     PRIMARY KEY (email)
 );
+
+create table userCursos (
+    email varchar(100),
+    password varchar(100),
+    PRIMARY KEY (email)
+)
 
 
 

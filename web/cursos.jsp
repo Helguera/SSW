@@ -95,8 +95,10 @@
                     <br>
                     <p><%=curso.getDescripcion()%></p>
                     <br>
-                    <input type="submit" value="Apuntarse al curso" onclick = "location.href='login.html'"/>
+                    <form action="cursos" method="post">
+                    <input type="submit" value="Apuntarse al curso" onclick = "location.href='index.html'"/>
                     </center>
+                    </form>
             <%}
                 
             %>
