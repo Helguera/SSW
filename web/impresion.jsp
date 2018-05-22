@@ -22,14 +22,14 @@
 
 
     <header id="header">
-        <a href="index.html">
+        <a href="index">
             <img src="images/logo.png" width="25%" />
         </a>
         <nav>
             <ul>
                 <li>
                     <h1>
-                        <a href="index.html">Inicio</a>
+                        <a href="index">Inicio</a>
                     </h1>
                 </li>
                 <li>
@@ -48,15 +48,31 @@
                     </h1>
                 </li>
                 <li>
-                    <h1>
-                        <a href="registro.html">Registro</a>
-                    </h1>
-                </li>
-                <li>
-                    <h1>
-                        <a href="info_empresa.html">La empresa</a>
-                    </h1>
-                </li>
+                        <h1>
+                            <a href="info_empresa">La empresa</a>
+                        </h1>
+                    </li>
+                    <%
+                    HttpSession sesion = request.getSession();
+                    sesion.setAttribute("urlAnterior", "tienda");
+                    if(sesion.getAttribute("usuario")==null){
+                    %>
+                        <li>
+                            <h1>
+                                <a href="registro">Registro</a>
+                            </h1>
+                        </li>
+                    <%
+                    }else{
+                    %>
+                        <li>
+                            <h1>
+                                <a href="logout">Logout</a>
+                            </h1>
+                        </li>
+                    <%
+                    }
+                    %>
             </ul>
         </nav>
 
@@ -66,7 +82,6 @@
    
      <div class="container">
         <%
-            HttpSession sesion = request.getSession();
             if(sesion.getAttribute("usuario")==null){
                 sesion.setAttribute("urlAnterior", "impresion");
         %>
@@ -74,8 +89,8 @@
                 <div class="container">
                     <h1>Para encargar una impresión o diseño es necesario haber iniciado sesión.</h1>
                 </div>
-                <h3><a href="login.html">Iniciar sesión</a></h3>
-                <h3><a href="registro.html">Registrarme</a></h3>
+                <h3><a href="login">Iniciar sesión</a></h3>
+                <h3><a href="registro">Registrarme</a></h3>
                 </center>
                 <br><br><br>
         <%
@@ -103,7 +118,7 @@
             <input type="file" name="adjunto" accept=".pdf,.jpg,.png,.stl" multiple>
          
              <FONT SIZE=1>&#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160* Formatos permitidos: .pdf , .jpg, .png , .stl.</font>
-            
+            .html
             <br>
             <br>
 
@@ -115,7 +130,7 @@
                 <input type = "submit" value = "Logout" />
                 </form>
             
-            </p>
+            </p>.html
                      <%
             }
         %>
@@ -132,4 +147,4 @@
 
 </body>
 
-</html>
+</html>.html

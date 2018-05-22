@@ -16,7 +16,7 @@
 
 
         <header id="header">
-            <a href="index.html">
+            <a href="index">
                 <img src="images/logo.png" width="25%" />
             </a>
 

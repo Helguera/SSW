@@ -21,14 +21,14 @@
 
 
         <header id="header">
-            <a href="index.html">
+            <a href="index">
                 <img src="images/logo.png" width="25%" />
             </a>
             <nav>
                 <ul>
                     <li>
                         <h1>
-                            <a href="index.html">Inicio</a>
+                            <a href="index">Inicio</a>
                         </h1>
                     </li>
                     <li>
@@ -48,12 +48,12 @@
                     </li>
                     <li>
                         <h1>
-                            <a href="registro.html">Registro</a>
+                            <a href="registro">Registro</a>
                         </h1>
                     </li>
                     <li>
                         <h1>
-                            <a href="info_empresa.html">La empresa</a>
+                            <a href="info_empresa">La empresa</a>
                         </h1>
                     </li>
                 </ul>
@@ -70,8 +70,8 @@
         <div class="container">
             <h1>Para apuntarse a un curso es necesario haber iniciado sesión.</h1>
         </div>
-        <h3><a href="login.html">Iniciar sesión</a></h3>
-        <h3><a href="registro.html">Registrarme</a></h3>
+        <h3><a href="login">Iniciar sesión</a></h3>
+        <h3><a href="registro">Registrarme</a></h3>
     </center>
     <br><br><br>
     <%
@@ -96,7 +96,7 @@
                     <p><%=curso.getDescripcion()%></p>
                     <br>
                     <form action="cursos" method="post">
-                    <input type="submit" value="Apuntarse al curso" onclick = "location.href='index.html'"/>
+                    <input type="submit" value="Apuntarse al curso" onclick = "location.href='index'"/>
                     </center>
                     </form>
             <%}
