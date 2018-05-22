@@ -69,7 +69,8 @@ create table admins (
 create table userCursos (
     email varchar(100),
     password varchar(100),
-    PRIMARY KEY (email)
+    PRIMARY KEY (email),
+    FOREIGN KEY (email) REFERENCES usuarios(email)
 )
 
 
