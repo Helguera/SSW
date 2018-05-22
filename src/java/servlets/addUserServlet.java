@@ -95,8 +95,6 @@ public class addUserServlet extends HttpServlet {
             response.sendRedirect(sesion.getAttribute("urlAnterior").toString());
         }
         
-        /*HttpSession sesion = request.getSession();
-        sesion.setAttribute("usuario", usuario);*/
         
         
         
