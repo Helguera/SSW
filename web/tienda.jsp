@@ -106,6 +106,19 @@
             <%}
                     }
                 %>
+    <%
+            if(sesion.getAttribute("usuario")!=null){
+                
+        %>
+            <form method="post" action="logout"> 
+
+                <input type = "submit" value = "Logout" />
+                </form>
+            
+            </p>
+                     <%
+            }
+        %>
 
         </ul>
                 

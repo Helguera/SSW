@@ -4,7 +4,7 @@ drop table consumibles;
 drop table productos;
 drop table cursos;
 drop table admins;
-drop table userCursos
+drop table userCursos;
 
 create table usuario (
     nombre varchar(100),

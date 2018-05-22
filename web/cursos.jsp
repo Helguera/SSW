@@ -102,9 +102,26 @@
             <%}
                 
             %>
+            
 
                 
-    </div>
+        </div>
+           <div class="container">
+            
+    <%
+            if(sesion.getAttribute("usuario")!=null){
+                
+        %>
+            <form method="post" action="logout"> 
+
+                <center><input type = "submit" value = "Logout" /></center>
+                </form>
+            
+            
+                     <%
+            }
+        %>
+           </div>
 
 
 

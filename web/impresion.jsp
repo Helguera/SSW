@@ -83,7 +83,10 @@
         %>
         <%
             if(sesion.getAttribute("usuario")!=null){
+                
         %>
+            
+
             <form method="post" action="upload" enctype="multipart/form-data"> 
             
             <div>
@@ -105,12 +108,18 @@
             <br>
 
             <p>
-                <input type = "submit" value = "Enviar" onclick = "location.href='index.html'"/>
+                <input type = "submit" value = "Enviar"/>
+                </form>
+                <form method="post" action="logout"> 
+
+                <input type = "submit" value = "Logout" />
+                </form>
+            
             </p>
                      <%
             }
         %>
-            </form>
+            
 
      </div>
    
