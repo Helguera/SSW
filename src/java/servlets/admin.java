@@ -51,6 +51,13 @@ public class admin extends HttpServlet {
             request.getRequestDispatcher("admin.jsp").forward(request, response);
         }
     }
+    
+    protected void doArchv(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        ArrayList<Archivo> archivo = ArchivosBD.getArchivos();
+        request.setAttribute("archivos", archivo);
+        request.getRequestDispatcher("admin.jsp").forward(request, response);
+    }
 
     @Override
     public String getServletInfo() {

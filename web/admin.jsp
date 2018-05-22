@@ -54,6 +54,10 @@
                 <br>
                 <center> <input type = "submit" name="zona" value = "Cursos"> </center> 
             </form>
+            <form action="admin" method="doArch"> 
+                <br>
+                <center> <input type = "submit" name="zona" value = "Consulta archivos recibidos"> </center> 
+            </form>
 
 
 

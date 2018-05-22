@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import servlets.ConnectionPool;
 
 /**
@@ -72,6 +73,35 @@ public class ArchivosBD {
             return false;
         }
 
+    }
+    
+    public static ArrayList<Archivo> getArchivos() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Archivo> ar=new ArrayList<Archivo>();
+        String query = "SELECT * FROM Archivos";
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Archivo a = new Archivo();
+                a.setRuta(rs.getString("ruta"));
+                a.setDescription(rs.getString("descripcion"));
+                a.setUsuario(rs.getString("usuario"));
+                
+                ar.add(a);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return ar;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
     
 
