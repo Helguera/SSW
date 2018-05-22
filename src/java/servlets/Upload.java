@@ -20,11 +20,10 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import roles.*;
 
-
 @WebServlet(name = "Upload", urlPatterns = {"/upload"})
 @MultipartConfig
 public class Upload extends HttpServlet {
-    
+
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,20 +33,20 @@ public class Upload extends HttpServlet {
         
             //Recogemos parametros del formulario 
             
-            Part filePart = request.getPart("file");
+            Part filePart = request.getPart("adjunto");
             String fileName = request.getParameter("nameArch");
             String description = request.getParameter("description");
             
             //No entiendo el porque de este error.
             
             Archivo ar = new Archivo();
-            ar.setRuta("/archivos/"+fileName);
+            ar.setRuta("archivos/"+fileName);
             ar.setNombre(fileName);
             HttpSession sesion = request.getSession();
-            Usuario u =(Usuario) sesion.getAttribute("usuario");
-            ar.setUsuario(u.getEmail());
-            
-            if(ArchivosBD.archExists(ar)==false)   ArchivosBD.insert(ar);
+            /*Usuario u =(Usuario) sesion.getAttribute("usuario");
+            ar.setUsuario(u.getEmail());*/
+            ArchivosBD.insert(ar);
+            //if(ArchivosBD.archExists(ar)==false)   ArchivosBD.insert(ar);
             
             OutputStream out = null;
             InputStream fileContent = null;
@@ -80,5 +79,61 @@ public class Upload extends HttpServlet {
             }
         
     }
+    /*protected void doPost(HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String path = "C:\\Users\\Pepe\\Documents\\sswRepository";
+        //String path = getServletContext().getRealPath("archivos");
+        try (PrintWriter out = response.getWriter()) {
+            Part filePart = request.getPart("file");
+            //String fileName = getFileName(filePart);
+            String fileName = request.getParameter("nameArch");
+
+            InputStream fileContent = filePart.getInputStream();
+            OutputStream outFile = null;
+            out.println("<!DOCTYPE html>");
+            out.println("<html><head>");
+            out.println("<title>Servlet Upload</title></head>");
+            out.println("<body>");
+            Archivo ar = new Archivo();
+            ar.setRuta("/archivos/" + fileName);
+            ar.setNombre(fileName);
+            HttpSession sesion = request.getSession();
+            Usuario u = (Usuario) sesion.getAttribute("usuario");
+            ar.setUsuario(u.getEmail());
+
+            if (ArchivosBD.archExists(ar) == false) {
+                ArchivosBD.insert(ar);
+            }
+
+            try {
+                outFile = new FileOutputStream(new File(path + File.separator
+                        + fileName));
+                int read = 0;
+                byte[] bytes = new byte[1024];
+                while ((read = fileContent.read(bytes)) != -1) {
+                    outFile.write(bytes, 0, read);
+                }
+                out.println("Fichero " + fileName + " creado");
+                response.sendRedirect("index.html");
+
+            } catch (FileNotFoundException fne) {
+                out.println("Error al subir el fichero:");
+                out.println("<br/>" + fne.getMessage());
+            } finally {
+                if (outFile != null) {
+                    outFile.close();
+                }
+                if (fileContent != null) {
+                    fileContent.close();
+                }
+                if (out != null) {
+                    out.println("</body></html>");
+                    out.close();
+                }
+            }
+        }
+    }*/
 
 }

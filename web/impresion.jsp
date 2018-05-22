@@ -81,7 +81,9 @@
         <%
             }
         %>
-            
+        <%
+            if(sesion.getAttribute("usuario")!=null){
+        %>
             <form method="post" action="upload" enctype="multipart/form-data"> 
             
             <div>
@@ -92,16 +94,22 @@
 
 
             </div>
-            
            
+            
+            
             <input type="file" name="adjunto" accept=".pdf,.jpg,.png,.stl" multiple>
+         
              <FONT SIZE=1>&#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160* Formatos permitidos: .pdf , .jpg, .png , .stl.</font>
+            
             <br>
             <br>
 
             <p>
                 <input type = "submit" value = "Enviar" onclick = "location.href='index.html'"/>
             </p>
+                     <%
+            }
+        %>
             </form>
 
      </div>
