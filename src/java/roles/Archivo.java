@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class Archivo implements Serializable{
     private String ruta;
-    private String nombre;
+    private String description;
     private String usuario;
     
     //Constructor
@@ -25,8 +25,8 @@ public class Archivo implements Serializable{
         this.ruta=ruta;
     }
     
-    public void setNombre(String n){
-        this.nombre=n;
+    public void setDescription(String n){
+        this.description=n;
     }
     public void setUsuario(String u){
         this.usuario=u;
@@ -34,8 +34,8 @@ public class Archivo implements Serializable{
     
     
     
-    String getNombre() {
-        return this.nombre;
+    String getDescription() {
+        return this.description;
     }
 
     
@@ -47,5 +47,7 @@ public class Archivo implements Serializable{
     String getUsuario() {
         return this.usuario;
     }
+
+    
     
 }

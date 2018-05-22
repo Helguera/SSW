@@ -15,6 +15,7 @@
 <head>
     <title>Impresion 3D</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    
 </head>
 
 <body>
@@ -101,13 +102,13 @@
                 
         %>
             
-
+            
             <form method="post" action="upload" enctype="multipart/form-data"> 
             
             <div>
                     <h3>Rellena los siguientes campos y selecciona un archivo..</h3>
-                    <input type="text" name="nameArch" placeholder="Nombre del archivo tal cual esta en tu drectorio..."/>
-
+                    <input type="text" name="nameArch" placeholder="Nombre del archivo tal cual esta en tu directorio..."/>
+                    
                     <input type="text" name="description" placeholder="Comentarios acerca del archivo..."/>
 
 
@@ -118,7 +119,7 @@
             <input type="file" name="adjunto" accept=".pdf,.jpg,.png,.stl" multiple>
          
              <FONT SIZE=1>&#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160* Formatos permitidos: .pdf , .jpg, .png , .stl.</font>
-            .html
+            
             <br>
             <br>
 
@@ -130,7 +131,7 @@
                 <input type = "submit" value = "Logout" />
                 </form>
             
-            </p>.html
+            </p>
                      <%
             }
         %>
@@ -147,4 +148,4 @@
 
 </body>
 
-</html>.html
+</html>

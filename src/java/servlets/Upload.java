@@ -30,27 +30,41 @@ public class Upload extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 //String path = "C:\\Users\\Pepe\\Documents\\sswRepository";
         String path = getServletContext().getRealPath("/archivos");
-        
+
             //Recogemos parametros del formulario 
             
             Part filePart = request.getPart("adjunto");
             String fileName = request.getParameter("nameArch");
             String description = request.getParameter("description");
             
-            //No entiendo el porque de este error.
-            
+            final PrintWriter pw = response.getWriter();
+            response.setContentType("text/html");
+
             Archivo ar = new Archivo();
-            ar.setRuta("archivos/"+fileName);
-            ar.setNombre(fileName);
+            ar.setRuta("/archivos/"+fileName);
+            ar.setDescription(description);
             HttpSession sesion = request.getSession();
-            /*Usuario u =(Usuario) sesion.getAttribute("usuario");
-            ar.setUsuario(u.getEmail());*/
-            ArchivosBD.insert(ar);
-            //if(ArchivosBD.archExists(ar)==false)   ArchivosBD.insert(ar);
+            Usuario u =(Usuario) sesion.getAttribute("usuario");
+            ar.setUsuario(u.getEmail());
+            if(!ArchivosBD.archExists(ar))   {
+               
+                ArchivosBD.insert(ar);
+
+            pw.println("<html><head><title>correcto.</title></head><body>");  
+            pw.println("<h1>Archivo subido correctamente.</h1>");            
+            pw.println("<h3><a href=\"index.html\">Volver al inicio.</a></h3>");
+            pw.println("</body></html>");
+            }
+            else{
+
+            pw.println("<html><head><title>Usuario tiene mas de un archivo en server.</title></head><body>");  
+            pw.println("<h1>El usuario no puede subir mas archivos.</h1>");            
+            pw.println("<h3><a href=\"index.html\">Volver al inicio.</a></h3>");
+            pw.println("</body></html>");
+            }
             
             OutputStream out = null;
             InputStream fileContent = null;
-            final PrintWriter writer = response.getWriter();
             
             try {
                 out = new FileOutputStream(new File(path + File.separator + fileName));
@@ -63,7 +77,7 @@ public class Upload extends HttpServlet {
                     out.write(bytes, 0, read);
                 }
                 //writer.println("New file " + fileName + " created at " + path);
-                response.sendRedirect("index.html");
+                //response.sendRedirect("index.html");
 
                 
             } catch (FileNotFoundException fne) {
