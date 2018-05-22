@@ -33,7 +33,7 @@
                     </li>
                     <li>
                         <h1>
-                            <a href="impresion.html">Impresión</a>
+                            <a href="impresion">Impresión</a>
                         </h1>
                     </li>
                     <li>

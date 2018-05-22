@@ -1,3 +1,15 @@
+<%-- 
+    Document   : impresion
+    Created on : Apr 23, 2018, 7:58:12 PM
+    Author     : javier
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="roles.*"%>
+<%@page import="servlets.*"%>
+<%@page import="java.util.*"%>
+<!DOCTYPE html>
+
 <html>
 <meta charset="utf-8">
 <head>
@@ -22,7 +34,7 @@
                 </li>
                 <li>
                     <h1>
-                        <a href="impresion.html">Impresión</a>
+                        <a href="impresion">Impresión</a>
                     </h1>
                 </li>
                 <li>
@@ -53,16 +65,32 @@
     <br>
    
      <div class="container">
-     
-         <center><h1>¡Envíe sus archivos!</h1></center>
-         <center><h3>Rellene la siguiente información:</h3></center>
-         <center><h3><a href="login.html">Iniciar sesión</a></h3></center>
-         <center><h3><a href="registro.html">Registrarme</a></h3></center>
+        <%
+            HttpSession sesion = request.getSession();
+            if(sesion.getAttribute("usuario")==null){
+                sesion.setAttribute("urlAnterior", "impresion");
+        %>
+                <center>
+                <div class="container">
+                    <h1>Para encargar una impresión o diseño es necesario haber iniciado sesión.</h1>
+                </div>
+                <h3><a href="login.html">Iniciar sesión</a></h3>
+                <h3><a href="registro.html">Registrarme</a></h3>
+                </center>
+                <br><br><br>
+        <%
+            }
+        %>
             
-            <form method="POST" action="upload" enctype="multipart/form-data"> 
+            <form method="post" action="upload" enctype="multipart/form-data"> 
             
             <div>
-            <textarea name="comentarios" rows="10" cols="40">Descripción de su solicitud.</textarea>
+                    <h3>Rellena los siguientes campos y selecciona un archivo..</h3>
+                    <input type="text" name="nameArch" placeholder="Nombre del archivo tal cual esta en tu drectorio..."/>
+
+                    <input type="text" name="description" placeholder="Comentarios acerca del archivo..."/>
+
+
             </div>
             
            
