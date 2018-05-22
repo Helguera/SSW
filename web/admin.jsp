@@ -30,9 +30,9 @@
             if (sesion.getAttribute("administrador") != null) {
         %>
         <%
-            if (sesion.getAttribute("tipo") == null) {
+            if (request.getAttribute("tipo") == null) {
                 //pw.print(sesion.getAttribute("tipo"));
-                
+
         %>
         <div class="container">
 
@@ -56,10 +56,8 @@
             </form>
 
         </div>
-        <%
-        } else {
-            if (sesion.getAttribute("tipo").equals("productos")) {
-            pw.print(sesion.getAttribute("tipo"));
+        <%        } else {
+            if (request.getAttribute("tipo").toString().equals("productos")) {
                 ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("productos");
 
         %>
@@ -68,46 +66,65 @@
                 <th>Nombre</th>
                 <th>Precio</th>
             </tr>
-            <tr>
+            <form action="consultAdminServlet" method="post">
+
+
+
                 <%                    for (int i = 0; i < productos.size(); i++) {
                         Producto producto = productos.get(i);
                         if (producto.getClass().getSimpleName().equals("Consumible")) {
                 %>
-                <th><%=((Consumible) producto).getNombre()%></th>
-                <th><%=((Consumible) producto).getPrecio()%></th>
-                    <%}%>
-            </tr>
+                <tr>
+                    <td><input name="valor" type="text" value=<%=((Consumible) producto).getNombre()%>></td>
+                    <td><input name="valor" type="text" value=<%=((Consumible) producto).getPrecio()%>></td>
+                    <td><center>
+                    <input type="submit" value="Eliminar" onclick="location.href = 'panelAmin'">
+                </center></td>
+                </tr>
+                <%}
+                    }%>
         </table>
+    </form> 
+
+    <form  action = "logout" method = "post"> 
+        <br> <br> <br>
+        <center> <input type = "submit" value = "Actualizar Articulos" > </center> 
+    </form> 
+
+    <form action="admin" method="get"> 
+        <br>
+        <center> <input type = "submit" value = "Volver"> </center> 
+    </form>
+
+    <form action="logout" method="post"> 
+        <br>
+        <center> <input type = "submit" value = "Cerrar Sesión"> </center> 
+    </form>
 
 
 
-        <%
-                    }
-                }
 
+
+    <%
             }
-        %>
- 
-        <%
-            
-
-            
-            
-        }else {
-        %>
-        <h1><center>No tiene permisos de administrador</center></h1>
+        }
+    } else {
+    %>
+    <h1><center>No tiene permisos de administrador</center></h1>
 
 
 
-        <%}%>
+    <%}%>
 
 
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <footer class="footer">
-            <br>
-            <h2>© 3DImpresion 2018</h2>
-        </footer>
 
-    </body>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer class="footer">
+        <br>
+        <h2>© 3DImpresion 2018</h2>
+    </footer>
+
+</body>
 
 </html>

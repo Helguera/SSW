@@ -38,10 +38,14 @@ public class admin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String tipo = request.getParameter("zona");
-        PrintWriter pw = response.getWriter();
-        pw.print(tipo);
+        ArrayList<Producto> productos = ProductoBD.getProductos();
+        ArrayList<Curso> cursos = CursoBD.getCursos();
+        ArrayList<Usuario> usuarios = UserBD.getUsuarios();
+        request.setAttribute("productos", productos);
+        request.setAttribute("cursos", cursos);
+        request.setAttribute("usuarios", usuarios);
         if (tipo == null) {
-            request.getRequestDispatcher("admin.jsp").forward(request, response);;
+            request.getRequestDispatcher("admin.jsp").forward(request, response);
         } else {
             request.setAttribute("tipo", tipo);
             request.getRequestDispatcher("admin.jsp").forward(request, response);
