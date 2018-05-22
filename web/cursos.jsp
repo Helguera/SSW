@@ -48,14 +48,30 @@
                     </li>
                     <li>
                         <h1>
-                            <a href="registro">Registro</a>
-                        </h1>
-                    </li>
-                    <li>
-                        <h1>
                             <a href="info_empresa">La empresa</a>
                         </h1>
                     </li>
+                    <%
+                    HttpSession sesion = request.getSession();
+                    sesion.setAttribute("urlAnterior", "tienda");
+                    if(sesion.getAttribute("usuario")==null){
+                    %>
+                        <li>
+                            <h1>
+                                <a href="registro">Registro</a>
+                            </h1>
+                        </li>
+                    <%
+                    }else{
+                    %>
+                        <li>
+                            <h1>
+                                <a href="logout">Logout</a>
+                            </h1>
+                        </li>
+                    <%
+                    }
+                    %>
                 </ul>
             </nav>
 
