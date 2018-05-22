@@ -1,8 +1,10 @@
-drop table usuario;
-drop table productos;
 drop table archivos;
+drop table usuario;
 drop table impresoras3d;
 drop table consumibles;
+drop table productos;
+
+
 drop table cursos;
 drop table admins;
 drop table userCursos;
@@ -25,7 +27,7 @@ create table usuario (
 create table productos (
     id_producto integer,
     precio double,
-    PRIMARY KEY (id_producto) 
+    PRIMARY KEY (id_producto)
 );
 
 create table archivos (
@@ -42,7 +44,7 @@ create table impresoras3d (
     modelo varchar(100),
     tamaño varchar(100),
     PRIMARY KEY (id_producto),
-    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto) ON DELETE CASCADE
 );
 
 create table consumibles (
@@ -50,7 +52,7 @@ create table consumibles (
     nombre varchar(100),
     marca varchar(100),
     PRIMARY KEY (id_producto),
-    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto) ON DELETE CASCADE
 );
 
 create table cursos (

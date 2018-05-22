@@ -92,4 +92,19 @@ public class ProductoBD {
         
     }
     
+    public static void removeProduct(int id){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        String query = "DELETE FROM PRODUCTOS WHERE id_producto = "+id;
+     
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+            
+            pool.freeConnection(connection);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
