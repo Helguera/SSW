@@ -68,7 +68,7 @@
         <%
             HttpSession sesion = request.getSession();
             if(sesion.getAttribute("usuario")==null){
-                sesion.setAttribute("urlAnterior", "cursos");
+                sesion.setAttribute("urlAnterior", "impresion");
         %>
                 <center>
                 <div class="container">
