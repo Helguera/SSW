@@ -1,3 +1,4 @@
+<%@page import="roles.Impresora3d"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="roles.Consumible"%>
@@ -66,64 +67,85 @@
                 <th>Nombre</th>
                 <th>Precio</th>
             </tr>
-            <form action="consultAdminServlet" method="post">
-
-
-
-                <%                    for (int i = 0; i < productos.size(); i++) {
-                        Producto producto = productos.get(i);
-                        if (producto.getClass().getSimpleName().equals("Consumible")) {
-                %>
-                <tr>
-                    <td><input name="valor" type="text" value=<%=((Consumible) producto).getNombre()%>></td>
-                    <td><input name="valor" type="text" value=<%=((Consumible) producto).getPrecio()%>></td>
-                    <td><center>
-                    <input type="submit" value="Eliminar" onclick="location.href = 'panelAmin'">
-                </center></td>
-                </tr>
-                <%}
+            <%                    for (int i = 0; i < productos.size(); i++) {
+                    Producto producto = productos.get(i);
+                    if (producto.getClass().getSimpleName().equals("Consumible")) {
+            %>
+            <tr><form action="elimina" method="get">
+                <td><input name="<%=((Consumible) producto).getId_producto()%>" type="text" value="<%=((Consumible) producto).getNombre()%>"></td>
+                <td><input name="<%=((Consumible) producto).getId_producto()%>" type="text" value="<%=((Consumible) producto).getPrecio()%>"></td>
+                <td> 
+                <center> <input type = "submit" value = "eliminar"> </center> 
+            </form></td>
+    </tr>
+    <%}
                     }%>
-        </table>
-    </form> 
+</table>
 
-    <form  action = "logout" method = "post"> 
-        <br> <br> <br>
-        <center> <input type = "submit" value = "Actualizar Articulos" > </center> 
-    </form> 
+<br><br><br>
 
-    <form action="admin" method="get"> 
-        <br>
-        <center> <input type = "submit" value = "Volver"> </center> 
-    </form>
-
-    <form action="logout" method="post"> 
-        <br>
-        <center> <input type = "submit" value = "Cerrar Sesión"> </center> 
-    </form>
+<table style="width:100%">
+    <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+    </tr>
 
 
 
-
-
-    <%
-            }
-        }
-    } else {
+    <%                    for (int i = 0; i < productos.size(); i++) {
+            Producto producto = productos.get(i);
+            if (producto.getClass().getSimpleName().equals("Impresora3d")) {
     %>
-    <h1><center>No tiene permisos de administrador</center></h1>
+    <tr>
+        <td><input name="valor" type="text" value="<%=((Impresora3d) producto).getModelo()%>"></td>
+        <td><input name="valor" type="text" value="<%=producto.getPrecio()%>"></td>
+        <td><center>
+        <input type="submit" value="Eliminar" onclick="admin">
+    </center></td>
+</tr>
+<%}
+                    }%>
+</table>
+
+
+<form  action = "logout" method = "post"> 
+    <br> <br> <br>
+    <center> <input type = "submit" value = "Actualizar Articulos" > </center> 
+</form> 
+
+<form action="admin" method="get"> 
+    <br>
+    <center> <input type = "submit" value = "Volver"> </center> 
+</form>
+
+<form action="logout" method="post"> 
+    <br>
+    <center> <input type = "submit" value = "Cerrar Sesión"> </center> 
+</form>
 
 
 
-    <%}%>
+
+
+<%
+        }
+    }
+} else {
+%>
+<h1><center>No tiene permisos de administrador</center></h1>
+
+
+
+<%}%>
 
 
 
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <footer class="footer">
-        <br>
-        <h2>© 3DImpresion 2018</h2>
-    </footer>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<footer class="footer">
+    <br>
+    <h2>© 3DImpresion 2018</h2>
+</footer>
 
 </body>
 
