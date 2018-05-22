@@ -61,21 +61,21 @@ public class addUserServlet extends HttpServlet {
         if (usuario.compruebaPass(request.getParameter("password2"))==false) {
             //pw.println("Las contraseñas no coinciden");
             //pw.println("<h3><a href="registro.html">Iniciar sesión</a></h3>");
-            //response.sendRedirect("registro.html");
-            pw.println("<html><head><title>Las contraseñas no coinciden.</title></head><body>");  
+            response.sendRedirect("registro");
+            /*pw.println("<html><head><title>Las contraseñas no coinciden.</title></head><body>");  
             pw.println("<h1><title>Las contraseñas no coinciden.</h1>");            
             pw.println("<h3><a href=\"registro.html\">Volver al formulario de registro.</a></h3>");
-            pw.println("</body></html>");
+            pw.println("</body></html>");*/
 
             
         }
             
         else if (usuario.compruebaCampos()==false) {
-            pw.println("<html><head><title>Todos los campos son requeridos</title></head><body>"); 
+            /*pw.println("<html><head><title>Todos los campos son requeridos</title></head><body>"); 
             pw.println("<h1>Todos los campos son requeridos</h1>"); 
             pw.println("<h3><a href=\"registro.html\">Volver al formulario de registro.</a></h3>");
-            pw.println("</body></html>");	
-            //response.sendRedirect("registro.html");
+            pw.println("</body></html>");*/	
+            response.sendRedirect("registro");
 
         }
             
@@ -84,15 +84,15 @@ public class addUserServlet extends HttpServlet {
             pw.println("<html><head><title>El usuario ya existía en la base de datos.</title></head><body>");   
             pw.println("<h1>El usuario ya existía en la base de datos.</h1>");            
 
-            pw.println("<h3><a href=\"registro.html\">Volver al formulario de registro.</a></h3>");
+            pw.println("<h3><a href=\"registro\">Volver al formulario de registro.</a></h3>");
             pw.println("</body></html>");
 
         } else {        
             UserBD.insert(usuario);
-            pw.println("Ha sido registrado correctamente");
+            /*pw.println("Ha sido registrado correctamente");*/
             HttpSession sesion = request.getSession();
             sesion.setAttribute("usuario", usuario);
-            response.sendRedirect(sesion.getAttribute("urlAnterior").toString());
+            response.sendRedirect("index");
         }
         
         

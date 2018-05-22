@@ -1,8 +1,36 @@
 <html>
 <meta charset="utf-8">
 <head>
+    
     <title>Impresion 3D</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script language="javascript">
+function comprobar()
+{
+   var nombre = document.formu.nombre.value;
+   //var apellidos = document.formu.apellidos.value;
+   if (nombre.length <1)
+   {
+      alert("No has introducido un nombre.");
+      return false;
+   }
+   if(document.getElementById('apellidos').value.length <1 ){
+       alert("No has introducido apellidos");
+       return false;
+   }
+   
+
+  
+   else{
+       alert("Registro Correcto");
+       //return true;
+   }
+   return true;
+   
+   
+   
+}
+</script>
 </head>
 
 <body>
@@ -74,10 +102,10 @@
          
          <center><h3>Rellene la siguiente información :</h3></center>
         
-         <form action="addUserServlet" method="post">   
+         <form action="addUserServlet" method="post" id="formu" name = "formu" >   
          
             <p>Nombre: <input name="nombre" type="text" placeholder="Tu nombre..."></p>
-            <p>Apellidos: <input name="apellidos" type="text" placeholder="Tus apellidos..."></p>
+            <p>Apellidos: <input name="apellidos" id ="apellidos" type="text" placeholder="Tus apellidos..."></p>
             <p>E-mail: <input name="email" type="text" placeholder="Tu email..."></p>
             <p>Contraseña: <input name="password" type="text" placeholder="Tu contraseña..."></p>
             <p>Confirma tu contraseña: <input name="password2" type="text" placeholder="Tu contraseña..."></p>
@@ -88,7 +116,7 @@
             <input name="provincia" type="text" placeholder="Tu provincia...">
             <input name="cp" type="text" placeholder="Tu código postal...">
             <h5>*Al hacer clic en Registrarme aceptas nuestra política de protección de datos.</h5>
-            <p><center><input type = "submit" value = "Registrarme"></center></p>
+            <p><center><input type = "submit" value = "Registrarme" onclick="comprobar()"></center></p>
          
          </form>
         
