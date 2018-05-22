@@ -1,3 +1,7 @@
+<%@page import="java.io.PrintWriter"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="roles.Consumible"%>
+<%@page import="roles.Producto"%>
 <html>
     <meta charset="utf-8">
 
@@ -22,10 +26,13 @@
 
         <%
             HttpSession sesion = request.getSession();
+            PrintWriter pw = response.getWriter();
             if (sesion.getAttribute("administrador") != null) {
         %>
         <%
             if (sesion.getAttribute("tipo") == null) {
+                //pw.print(sesion.getAttribute("tipo"));
+                
         %>
         <div class="container">
 
@@ -50,10 +57,43 @@
 
         </div>
         <%
+        } else {
+            if (sesion.getAttribute("tipo").equals("productos")) {
+            pw.print(sesion.getAttribute("tipo"));
+                ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("productos");
+
+        %>
+        <table style="width:100%">
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+            </tr>
+            <tr>
+                <%                    for (int i = 0; i < productos.size(); i++) {
+                        Producto producto = productos.get(i);
+                        if (producto.getClass().getSimpleName().equals("Consumible")) {
+                %>
+                <th><%=((Consumible) producto).getNombre()%></th>
+                <th><%=((Consumible) producto).getPrecio()%></th>
+                    <%}%>
+            </tr>
+        </table>
+
+
+
+        <%
+                    }
+                }
+
             }
         %>
+ 
         <%
-        } else {
+            
+
+            
+            
+        }else {
         %>
         <h1><center>No tiene permisos de administrador</center></h1>
 

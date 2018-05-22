@@ -38,10 +38,12 @@ public class admin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String tipo = request.getParameter("zona");
+        PrintWriter pw = response.getWriter();
+        pw.print(tipo);
         if (tipo == null) {
             request.getRequestDispatcher("admin.jsp").forward(request, response);;
         } else {
-            request.setAttribute(tipo, tipo);
+            request.setAttribute("tipo", tipo);
             request.getRequestDispatcher("admin.jsp").forward(request, response);
         }
     }
