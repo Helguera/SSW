@@ -126,11 +126,6 @@
             <p>
                 <input type = "submit" value = "Enviar"/>
                 </form>
-                <form method="post" action="logout"> 
-
-                <input type = "submit" value = "Logout" />
-                </form>
-            
             </p>
                      <%
             }

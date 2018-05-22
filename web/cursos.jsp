@@ -111,39 +111,15 @@
                     <p><%=curso.getDescripcion()%></p>
                     <br>
                     <form action="cursos" method="post">
-                    <input type="submit" value="Apuntarse al curso" onclick = "location.href='index'"/>
+                    <input type="submit" value="Apuntarse al curso"/>
                     </center>
                     </form>
             <%}
                 
             %>
-            
-
+           
                 
         </div>
-           <div class="container">
-            
-    <%
-            if(sesion.getAttribute("usuario")!=null){
-                
-        %>
-            <form method="post" action="logout"> 
-
-                <center><input type = "submit" value = "Logout" /></center>
-                </form>
-            
-            
-                     <%
-            }
-        %>
-           </div>
-
-
-
-
-
-            
-
         <br><br><br><br><br><br><br><br><br>
 
         <footer class="footer">

@@ -75,7 +75,7 @@
         <p>Correo electrónico: <input name="correo" type="text" placeholder="Tu correo electrónico..."></p>
         <p>Contraseña: <input name="pass" type="password" placeholder="Contraseña..."></p>
         <center>
-            <input type="submit" value="Acceder" onclick="location.href='index'">
+            <input type="submit" value="Acceder">
         </center>
         </form>
             <br>

@@ -72,8 +72,8 @@ create table userCursos (
     email varchar(100),
     password varchar(100),
     PRIMARY KEY (email),
-    FOREIGN KEY (email) REFERENCES usuarios(email)
-)
+    FOREIGN KEY (email) REFERENCES usuario(email)
+);
 
 
 
