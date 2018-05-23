@@ -7,13 +7,16 @@
     <script language="javascript">
 function comprobar()
 {
-   
-   if(document.getElementById('apellidos').value.length <1||document.getElementById('email').value.length<1||
-           document.getElementById('password').value.length<1||document.getElementById('password2').value.length<1||
-           document.getElementById('calle').value.length<1||document.getElementById('resto').value.length<1||
-           document.getElementById('poblacion').value.length<1||document.getElementById('provincia').value.length<1||
-           document.getElementById('cp').value.length<1){
-       alert("Por favor, rellena todos los campos");
+   var nombre = document.formu.nombre.value;
+   //var apellidos = document.formu.apellidos.value;
+   if (nombre.length <1)
+   {
+      alert("No has introducido un nombre.");
+      return false;
+   }
+   if(document.getElementById('apellidos').value.length <1 ){
+       alert("No has introducido apellidos");
+       return false;
    }
    
 
@@ -103,15 +106,15 @@ function comprobar()
          
             <p>Nombre: <input name="nombre" type="text" placeholder="Tu nombre..."></p>
             <p>Apellidos: <input name="apellidos" id ="apellidos" type="text" placeholder="Tus apellidos..."></p>
-            <p>E-mail: <input name="email" id="email" type="text" placeholder="Tu email..."></p>
-            <p>Contraseña: <input name="password" id="password" type="text" placeholder="Tu contraseña..."></p>
-            <p>Confirma tu contraseña: <input name="password2" id="password2" type="text" placeholder="Tu contraseña..."></p>
+            <p>E-mail: <input name="email" type="text" placeholder="Tu email..."></p>
+            <p>Contraseña: <input name="password" type="text" placeholder="Tu contraseña..."></p>
+            <p>Confirma tu contraseña: <input name="password2" type="text" placeholder="Tu contraseña..."></p>
             <p>Dirección:</p>
-            <input name="calle" id="calle" type="text" placeholder="Tu calle...">
-            <input name="resto" id="resto" type="text" placeholder="Numero, resto...">
-            <input name="poblacion" id="poblacion" type="text" placeholder="Tu población...">
-            <input name="provincia" id="provincia" type="text" placeholder="Tu provincia...">
-            <input name="cp" id="cp" type="text" placeholder="Tu código postal...">
+            <input name="calle" type="text" placeholder="Tu calle...">
+            <input name="resto" type="text" placeholder="Numero, resto...">
+            <input name="poblacion" type="text" placeholder="Tu población...">
+            <input name="provincia" type="text" placeholder="Tu provincia...">
+            <input name="cp" type="text" placeholder="Tu código postal...">
             <h5>*Al hacer clic en Registrarme aceptas nuestra política de protección de datos.</h5>
             <p><center><input type = "submit" value = "Registrarme" onclick="comprobar()"></center></p>
          

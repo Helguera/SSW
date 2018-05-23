@@ -81,7 +81,6 @@ public class addUserServlet extends HttpServlet {
             
         else if(UserBD.userExists(usuario) == true) {
             //pw.println("El usuario ya existía en la base de datos");
-            
             pw.println("<html><head><title>El usuario ya existía en la base de datos.</title></head><body>");   
             pw.println("<h1>El usuario ya existía en la base de datos.</h1>");            
 
