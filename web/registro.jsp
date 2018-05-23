@@ -115,7 +115,7 @@ function comprobar()
             if(!error.equals("")){
          %>
                 <script language="javascript" type="text/javascript">
-                alert(error);
+                alert(<%=error%>);
                 </script>
          <%
             }

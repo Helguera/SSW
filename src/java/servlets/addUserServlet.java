@@ -56,6 +56,7 @@ public class addUserServlet extends HttpServlet {
         PrintWriter pw = response.getWriter();
         response.setContentType("text/html");
         HttpSession sesion = request.getSession();
+        sesion.setAttribute("errorDatos", "");
 
         
         
@@ -77,7 +78,6 @@ public class addUserServlet extends HttpServlet {
 
         } else {        
             UserBD.insert(usuario);
-            sesion.setAttribute("errorDatos", "");
             sesion.setAttribute("usuario", usuario);
             response.sendRedirect("index");
         }
