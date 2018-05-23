@@ -34,17 +34,17 @@ public class Archivo implements Serializable{
     
     
     
-    String getDescription() {
+    public String getDescription() {
         return this.description;
     }
 
     
 
-    String getRuta() {
+    public String getRuta() {
         return this.ruta;
     }
 
-    String getUsuario() {
+    public String getUsuario() {
         return this.usuario;
     }
 

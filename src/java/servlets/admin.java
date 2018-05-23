@@ -28,9 +28,11 @@ public class admin extends HttpServlet {
         ArrayList<Producto> productos = ProductoBD.getProductos();
         ArrayList<Curso> cursos = CursoBD.getCursos();
         ArrayList<Usuario> usuarios = UserBD.getUsuarios();
+        ArrayList<Archivo> archivos = ArchivosBD.getArchivos();
         request.setAttribute("productos", productos);
         request.setAttribute("cursos", cursos);
         request.setAttribute("usuarios", usuarios);
+        request.setAttribute("archivos", archivos);
         request.getRequestDispatcher("admin.jsp").forward(request, response);
     }
 
@@ -41,9 +43,11 @@ public class admin extends HttpServlet {
         ArrayList<Producto> productos = ProductoBD.getProductos();
         ArrayList<Curso> cursos = CursoBD.getCursos();
         ArrayList<Usuario> usuarios = UserBD.getUsuarios();
+        ArrayList<Archivo> archivos = ArchivosBD.getArchivos();
         request.setAttribute("productos", productos);
         request.setAttribute("cursos", cursos);
         request.setAttribute("usuarios", usuarios);
+        request.setAttribute("archivos", archivos);
         if (tipo == null) {
             request.getRequestDispatcher("admin.jsp").forward(request, response);
         } else {
@@ -52,16 +56,6 @@ public class admin extends HttpServlet {
         }
     }
     
-    protected void doArchv(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        ArrayList<Archivo> archivo = ArchivosBD.getArchivos();
-        request.setAttribute("archivos", archivo);
-        request.getRequestDispatcher("admin.jsp").forward(request, response);
-    }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    
 
 }

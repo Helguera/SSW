@@ -90,7 +90,7 @@ public class ArchivosBD {
                 Archivo a = new Archivo();
                 a.setRuta(rs.getString("ruta"));
                 a.setDescription(rs.getString("descripcion"));
-                a.setUsuario(rs.getString("usuario"));
+                a.setUsuario(rs.getString("email"));
                 
                 ar.add(a);
             }

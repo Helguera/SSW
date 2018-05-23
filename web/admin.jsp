@@ -1,3 +1,4 @@
+<%@page import="roles.Archivo"%>
 <%@page import="roles.Impresora3d"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.ArrayList"%>
@@ -54,7 +55,7 @@
                 <br>
                 <center> <input type = "submit" name="zona" value = "Cursos"> </center> 
             </form>
-            <form action="admin" method="doArch"> 
+            <form action="admin" method="post"> 
                 <br>
                 <center> <input type = "submit" name="zona" value = "Consulta archivos recibidos"> </center> 
             </form>
@@ -115,14 +116,54 @@
     </form></td>
 </tr>
 <%}
-        }%>
+    }%>
 </table>
 
 
-<form  action = "logout" method = "post"> 
-    <br> <br> <br>
-    <center> <input type = "submit" value = "Actualizar Articulos"> </center> 
-</form> 
+
+<form action="admin" method="get"> 
+    <br>
+    <center> <input type = "submit" value = "Volver"> </center> 
+</form>
+
+<form action="logout" method="post"> 
+    <br>
+    <center> <input type = "submit" value = "Cerrar Sesión"> </center> 
+</form>
+
+
+
+
+
+<%
+    }
+
+    if (request.getAttribute("tipo").toString().equals("Consulta archivos recibidos")) {
+        ArrayList<Archivo> archivos = (ArrayList<Archivo>) request.getAttribute("archivos");
+
+%>
+<table style="width:100%">
+    <tr>
+        <th>Ruta</th>
+        <th>Descripcion</th>
+        <th>Usuario</th>
+    </tr>
+    <%                    for (int i = 0; i < archivos.size(); i++) {
+            Archivo archivo = archivos.get(i);
+    %>
+    <tr>
+
+        <td><input name="ruta" type="text" value="<%=archivo.getRuta()%>"readonly></td>
+        <td><input name="desc" type="text" value="<%=archivo.getDescription()%>"readonly></td>
+        <td><input name="user" type="text" value="<%=archivo.getUsuario()%>"readonly></td>
+        </tr>
+        <%
+        }%>
+</table>
+
+<br><br><br>
+
+
 
 <form action="admin" method="get"> 
     <br>
@@ -140,6 +181,28 @@
 
 <%
         }
+
+if (request.getAttribute("tipo").toString().equals("Cursos")) {
+%>
+<h1><center>No se ha implementado por tiempo, es igual que el admin de productos</center></h1>
+<form action="admin" method="get"> 
+    <br><br><br><br>
+    <center> <input type = "submit" value = "Volver"> </center> 
+</form>
+<%
+
+}
+
+if (request.getAttribute("tipo").toString().equals("Clientes")) {
+%>
+<h1><center>No se ha implementado por tiempo, es igual que el admin de productos</center></h1>
+<form action="admin" method="get"> 
+    <br><br><br><br>
+    <center> <input type = "submit" value = "Volver"> </center> 
+</form>
+<%
+}
+
     }
 } else {
 %>
