@@ -100,15 +100,7 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=file] {
-  width: 25%;
-  margin: auto;
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  cursor: pointer;
-}
+
 
 
 .container {
