@@ -22,8 +22,8 @@ public class ArchivosBD {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String query = "insert into archivos (nombre, ruta, usuario) "
-                + "VALUES('" + a.getDescription() + "','" + a.getRuta() + "','" + a.getUsuario() + "')";
+        String query = "insert into archivos (email, ruta, descripcion) "
+                + "VALUES('" + a.getUsuario() + "','" + a.getRuta() + "','" + a.getDescription() + "')";
         //String query = "insert into usuario values ('"+user.getNombre()+"','"+user.getApellidos()+"','"+user.getEmail()+"','"+user.getCalle()+"',"+user.getResto()+",'"+user.getPoblacion()+"',"+ user.getCp()+",'"+user.getPassword()+"')";
         try {
             Statement statement = connection.createStatement();
@@ -36,9 +36,9 @@ public class ArchivosBD {
 
             //Preparamos el query
             ps = connection.prepareStatement(query);
-            ps.setString(1, a.getDescription());
+            ps.setString(3, a.getDescription());
             ps.setString(2, a.getRuta());
-            ps.setString(3, a.getUsuario());
+            ps.setString(1, a.getUsuario());
            
 
             //Ejecutamos el query
@@ -58,7 +58,7 @@ public class ArchivosBD {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "SELECT usuario FROM ARCHIVOS WHERE usuario = ?";
+        String query = "SELECT email FROM ARCHIVOS WHERE email = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, a.getUsuario());

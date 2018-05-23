@@ -33,6 +33,7 @@ create table productos (
 create table archivos (
     email varchar(100),
     ruta varchar(100),
+    descripcion varchar(100),
     PRIMARY KEY (email),
     FOREIGN KEY (email) REFERENCES usuario(email) ON DELETE CASCADE
 );

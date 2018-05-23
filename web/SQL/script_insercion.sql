@@ -41,6 +41,6 @@ insert into admins values ('cantalejo@gmail.com','1111');
 insert into admins values ('1','1');
 
 --INSERTAR ARCHIVOS --
-insert into archivos values('hola@hola.com','hola.pdf');
+insert into archivos values('hola@hola.com','hola.pdf','hola gonzalo');
 
 
