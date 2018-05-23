@@ -15,7 +15,21 @@
 <head>
     <title>Impresion 3D</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    
+    <script language="javascript">
+function comprobar()
+{
+   
+   if(document.getElementById('name').value.length <1||document.getElementById('des').value.length <1||
+           document.getElementById('file').value.length<1){
+       alert("No se han rellenado todos los campos.");
+   }
+   
+   return true;
+   
+   
+   
+}
+</script>
 </head>
 
 <body>
@@ -55,7 +69,7 @@
                     </li>
                     <%
                     HttpSession sesion = request.getSession();
-                    sesion.setAttribute("urlAnterior", "tienda");
+                    sesion.setAttribute("urlAnterior", "impresion");
                     if(sesion.getAttribute("usuario")==null){
                     %>
                         <li>
@@ -107,16 +121,16 @@
             
             <div>
                     <h3>Rellena los siguientes campos y selecciona un archivo..</h3>
-                    <input type="text" name="nameArch" placeholder="Nombre del archivo tal cual esta en tu directorio..."/>
+                    <input type="text" id="name" name="nameArch" placeholder="Nombre del archivo tal cual esta en tu directorio..."/>
                     
-                    <input type="text" name="description" placeholder="Comentarios acerca del archivo..."/>
+                    <input type="text" id="des " name="description" placeholder="Comentarios acerca del archivo..."/>
 
 
             </div>
            
             
             
-            <input type="file" name="adjunto" accept=".pdf,.jpg,.png,.stl" multiple>
+            <input type="file" id="file"  name="adjunto" accept=".pdf,.jpg,.png,.stl" multiple>
          
              <FONT SIZE=1>&#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160* Formatos permitidos: .pdf , .jpg, .png , .stl.</font>
             
@@ -124,7 +138,7 @@
             <br>
 
             <p>
-                <input type = "submit" value = "Enviar"/>
+                <input type = "submit" value = "Enviar" onclick="comprobar()"/>
                 </form>
             </p>
                      <%

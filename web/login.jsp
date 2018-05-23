@@ -4,6 +4,21 @@
 <head>
     <title>Impresion 3D</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script language="javascript">
+function comprobar()
+{
+   
+   if(document.getElementById('correo').value.length <1||
+           document.getElementById('pass').value.length<1){
+       alert("No se han rellenado todos los campos o el loggin es incorrecto.");
+   }
+   
+   return true;
+   
+   
+   
+}
+</script>
 </head>
 
 <body>
@@ -72,10 +87,10 @@
     <div class="container">
         
         <form action="consultUserServlet" method="post">
-        <p>Correo electrónico: <input name="correo" type="text" placeholder="Tu correo electrónico..."></p>
-        <p>Contraseña: <input name="pass" type="password" placeholder="Contraseña..."></p>
+        <p>Correo electrónico: <input name="correo" id="correo" type="text" placeholder="Tu correo electrónico..."></p>
+        <p>Contraseña: <input name="pass" id="pass" type="password" placeholder="Contraseña..."></p>
         <center>
-            <input type="submit" value="Acceder">
+            <input type="submit" value="Acceder" onclick="comprobar()" >
         </center>
         </form>
             <br>

@@ -104,8 +104,8 @@ function comprobar()
             <p>Nombre: <input name="nombre" type="text" placeholder="Tu nombre..."></p>
             <p>Apellidos: <input name="apellidos" id ="apellidos" type="text" placeholder="Tus apellidos..."></p>
             <p>E-mail: <input name="email" id="email" type="text" placeholder="Tu email..."></p>
-            <p>Contraseña: <input name="password" id="password" type="text" placeholder="Tu contraseña..."></p>
-            <p>Confirma tu contraseña: <input name="password2" id="password2" type="text" placeholder="Tu contraseña..."></p>
+            <p>Contraseña: <input name="password" id="password" type="password" placeholder="Tu contraseña..."></p>
+            <p>Confirma tu contraseña: <input name="password2" id="password2" type="password" placeholder="Tu contraseña..."></p>
             <p>Dirección:</p>
             <input name="calle" id="calle" type="text" placeholder="Tu calle...">
             <input name="resto" id="resto" type="text" placeholder="Numero, resto...">

@@ -44,11 +44,11 @@ public class consultUserServlet extends HttpServlet{
 
         
         if (UserBD.userExists(usuario) == false) {
-            pw.println("<html><head><title>incorrecto.</title></head><body>");  
+            /*pw.println("<html><head><title>incorrecto.</title></head><body>");  
             pw.println("<h1>El usuario NO existe en la base de datos.</h1>");            
             pw.println("<h3><a href=\"login.html\">Volver al loggin.</a></h3>");
-            pw.println("</body></html>");
-            
+            pw.println("</body></html>");*/
+            response.sendRedirect("login");
         } else {
             if(UserBD.selectPass(email).equals(usuario.getPassword())){
                 HttpSession sesion = request.getSession();
@@ -56,10 +56,12 @@ public class consultUserServlet extends HttpServlet{
                 response.sendRedirect(sesion.getAttribute("urlAnterior").toString());
             }
             else {
-            pw.println("<html><head><title>incorrecto2.</title></head><body>");  
+            /*pw.println("<html><head><title>incorrecto2.</title></head><body>");  
             pw.println("<h1>Contraseña incorrecta.</h1>");            
             pw.println("<h3><a href=\"login.html\">Volver al loggin.</a></h3>");
-            pw.println("</body></html>");
+            pw.println("</body></html>");*/
+                        response.sendRedirect("login");
+
             }
         }
         

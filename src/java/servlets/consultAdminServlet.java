@@ -43,7 +43,9 @@ public class consultAdminServlet extends HttpServlet {
 
         
         if (AdminBD.adminExists(admin) == false) {
-            pw.println("El administrador no existe en la base de datos");
+            //pw.println("El administrador no existe en la base de datos");
+            response.sendRedirect("logAdmin.html");
+
             
         } else {
             if(AdminBD.selectPass(email).equals(admin.getPassword())){
@@ -51,7 +53,8 @@ public class consultAdminServlet extends HttpServlet {
                 sesion.setAttribute("administrador", admin);
                 response.sendRedirect("admin");
             }
-            else pw.println("Contraseña incorrecta.");
+            else                         response.sendRedirect("logAdmin.html");
+//pw.println("Contraseña incorrecta.");
         }
     }
 }
