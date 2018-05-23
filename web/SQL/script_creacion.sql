@@ -1,5 +1,5 @@
 drop table archivos;
-drop table usuario;
+
 drop table impresoras3d;
 drop table consumibles;
 drop table productos;
@@ -8,7 +8,7 @@ drop table productos;
 drop table cursos;
 drop table admins;
 drop table userCursos;
-
+drop table usuario;
 
 create table usuario (
     nombre varchar(100),
@@ -31,11 +31,10 @@ create table productos (
 );
 
 create table archivos (
-    nombre varchar(100),
+    email varchar(100),
     ruta varchar(100),
-    usuario varchar(100),
-    PRIMARY KEY (nombre),
-    FOREIGN KEY (nombre) REFERENCES usuario(email)
+    PRIMARY KEY (email),
+    FOREIGN KEY (email) REFERENCES usuario(email) ON DELETE CASCADE
 );
 
 create table impresoras3d (
@@ -74,6 +73,7 @@ create table userCursos (
     PRIMARY KEY (email),
     FOREIGN KEY (email) REFERENCES usuario(email)
 );
+
 
 
 
