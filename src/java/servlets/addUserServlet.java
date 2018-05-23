@@ -59,20 +59,20 @@ public class addUserServlet extends HttpServlet {
         sesion.setAttribute("errorDatos", "");
 
         
-        
+        /*
         if (usuario.compruebaPass(request.getParameter("password2"))==false) {
-            sesion.setAttribute("datosCorrectos", "Las contraseñas no coinciden.");
+            sesion.setAttribute("errorDatos", "Las contraseñas no coinciden.");
             response.sendRedirect("registro");
 
             
         }
             
-        /*else if (usuario.compruebaCampos()==false) {	
+        else if (usuario.compruebaCampos()==false) {	
             sesion.setAttribute("errorDatos", "Todos los campos son requeridos.");
             response.sendRedirect("registro");
         }*/
             
-        else if(UserBD.userExists(usuario) == true) {
+        if(UserBD.userExists(usuario) == true) {
             sesion.setAttribute("errorDatos", "El usuario ya existe.");
             response.sendRedirect("registro");
 

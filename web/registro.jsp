@@ -111,13 +111,15 @@ function comprobar()
          </form>
          
          <%
-            String error=sesion.getAttribute("errorDatos").toString();
-            if(!error.equals("")){
+            if(sesion.getAttribute("errorDatos") != null){
+                String error=sesion.getAttribute("errorDatos").toString();
+                if(!error.equals("")){
          %>
                 <script language="javascript" type="text/javascript">
                 alert(<%=error%>);
                 </script>
          <%
+                }   
             }
          %>
         
