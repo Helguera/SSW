@@ -55,43 +55,29 @@ public class addUserServlet extends HttpServlet {
         
         PrintWriter pw = response.getWriter();
         response.setContentType("text/html");
+        HttpSession sesion = request.getSession();
 
         
         
         if (usuario.compruebaPass(request.getParameter("password2"))==false) {
-            //pw.println("Las contraseñas no coinciden");
-            //pw.println("<h3><a href="registro.html">Iniciar sesión</a></h3>");
+            sesion.setAttribute("datosCorrectos", "Las contraseñas no coinciden.");
             response.sendRedirect("registro");
-            /*pw.println("<html><head><title>Las contraseñas no coinciden.</title></head><body>");  
-            pw.println("<h1><title>Las contraseñas no coinciden.</h1>");            
-            pw.println("<h3><a href=\"registro.html\">Volver al formulario de registro.</a></h3>");
-            pw.println("</body></html>");*/
 
             
         }
             
-        else if (usuario.compruebaCampos()==false) {
-            /*pw.println("<html><head><title>Todos los campos son requeridos</title></head><body>"); 
-            pw.println("<h1>Todos los campos son requeridos</h1>"); 
-            pw.println("<h3><a href=\"registro.html\">Volver al formulario de registro.</a></h3>");
-            pw.println("</body></html>");*/	
+        /*else if (usuario.compruebaCampos()==false) {	
+            sesion.setAttribute("errorDatos", "Todos los campos son requeridos.");
             response.sendRedirect("registro");
-
-        }
+        }*/
             
         else if(UserBD.userExists(usuario) == true) {
-            //pw.println("El usuario ya existía en la base de datos");
-            
-            pw.println("<html><head><title>El usuario ya existía en la base de datos.</title></head><body>");   
-            pw.println("<h1>El usuario ya existía en la base de datos.</h1>");            
-
-            pw.println("<h3><a href=\"registro\">Volver al formulario de registro.</a></h3>");
-            pw.println("</body></html>");
+            sesion.setAttribute("errorDatos", "El usuario ya existe.");
+            response.sendRedirect("registro");
 
         } else {        
             UserBD.insert(usuario);
-            /*pw.println("Ha sido registrado correctamente");*/
-            HttpSession sesion = request.getSession();
+            sesion.setAttribute("errorDatos", "");
             sesion.setAttribute("usuario", usuario);
             response.sendRedirect("index");
         }

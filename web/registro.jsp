@@ -15,13 +15,6 @@ function comprobar()
            document.getElementById('cp').value.length<1){
        alert("Por favor, rellena todos los campos");
    }
-   
-
-  
-   else{
-       alert("Registro Correcto");
-       //return true;
-   }
    return true;
    
    
@@ -116,6 +109,17 @@ function comprobar()
             <p><center><input type = "submit" value = "Registrarme" onclick="comprobar()"></center></p>
          
          </form>
+         
+         <%
+            String error=sesion.getAttribute("errorDatos").toString();
+            if(!error.equals("")){
+         %>
+                <script language="javascript" type="text/javascript">
+                alert(error);
+                </script>
+         <%
+            }
+         %>
         
      </div>
      
